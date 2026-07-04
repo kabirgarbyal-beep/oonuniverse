@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Orders — ऊनीverse | Interactive Loom Studio</title>
+  <meta name="description" content="Design your own custom crochet creation. Choose your base, yarn colors, accessories, and name tag in our interactive Loom Studio." />
+  <meta property="og:title" content="Custom Orders — ऊनीverse" />
+  <meta property="og:description" content="Design your own custom crochet creation. Choose base, yarn colors, accessories, and name tag in our interactive Loom Studio." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="https://oouniverse.com/assets/images/crochet_yarn_logo_1783009375471.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://oouniverse.com/custom" />
+  <link rel="canonical" href="https://oouniverse.com/custom" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;700&family=Manrope:wght@300;400;500;600;700&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+<style>
+  select { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2370411B' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+  #custom-added-success { animation: fadeSlideIn 400ms ease both; }
+  @keyframes fadeSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes bounce { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-4px); } }
+</style>
+<style>
+  /* Navbar link hover glow */
+  #navbar a, #navbar button {
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+  }
+  #navbar a:hover, #navbar button:hover {
+    text-shadow: 0 0 8px rgba(223,168,180,0.6), 0 0 20px rgba(223,168,180,0.3), 0 0 40px rgba(223,168,180,0.15);
+  }
+  #navbar a.active {
+    text-shadow: 0 0 6px rgba(223,168,180,0.4);
+  }
+
+  /* Cart & Wishlist icon glow on hover */
+  #cart-btn, #wishlist-btn {
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  }
+  #cart-btn:hover, #wishlist-btn:hover {
+    box-shadow: 0 0 10px rgba(223,168,180,0.5), 0 0 25px rgba(223,168,180,0.3), 0 0 50px rgba(223,168,180,0.15);
+    background-color: rgba(244,233,225,0.9);
+    transform: scale(1.1);
+  }
+
+  /* Badge notification pulse */
+  @keyframes badge-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.5); }
+    50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(223,168,180,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0); }
+  }
+  @keyframes badge-glow {
+    0%, 100% { box-shadow: 0 0 4px rgba(223,168,180,0.4); }
+    50% { box-shadow: 0 0 12px rgba(223,168,180,0.8), 0 0 20px rgba(223,168,180,0.4); }
+  }
+  #cart-btn .absolute.-top-1, #wishlist-btn .absolute.-top-1 {
+    animation: badge-glow 2s ease-in-out infinite;
+  }
+  #cart-btn .absolute.-top-1.badge-pop, #wishlist-btn .absolute.-top-1.badge-pop {
+    animation: badge-pulse 0.5s cubic-bezier(0.34,1.56,0.64,1), badge-glow 2s ease-in-out infinite 0.5s;
+  }
+</style>
+<script type="application/ld+json">{ "@context": "https://schema.org", "@type": "Organization", "name": "\u090a\u0928\u0940verse", "url": "https://oouniverse.com", "description": "Premium handcrafted crochet creations made with love in Haldwani, India.", "foundingDate": "2024", "contactPoint": { "@type": "ContactPoint", "telephone": "+91-9876543210", "contactType": "customer service", "availableLanguage": ["English", "Hindi"] }, "sameAs": ["https://instagram.com/oouniverse", "https://facebook.com/oouniverse"] } }</script>
+</head>
+<body class="preloader-active">
+<a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#70411B] focus:text-white focus:rounded-xl focus:outline-none">Skip to main content</a>
+
+<!-- Custom Cursor -->
+<div id="custom-cursor" style="position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:2147483647;overflow:visible;">
+  <div id="cursor-ring" style="position:absolute;width:20px;height:20px;border-radius:50%;background:#DFA8B4;border:1px solid rgba(112,65,27,0.2);box-shadow:0 1px 3px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;left:0;top:0;transform:translate(-50%,-50%);opacity:0;z-index:3">
+    <div style="position:absolute;inset:2px;border:1px dashed rgba(112,65,27,0.25);border-radius:50%;animation:spin 8s linear infinite"></div>
+  </div>
+  <div id="cursor-dot" style="position:absolute;width:8px;height:8px;border-radius:50%;background:#9A5B2A;left:0;top:0;transform:translate(-50%,-50%);opacity:0;z-index:2"></div>
+  <div id="cursor-hover-ring" style="position:absolute;width:20px;height:20px;border-radius:50%;border:2px solid rgba(223,168,180,0.4);pointer-events:none;left:0;top:0;transform:translate(-50%,-50%) scale(1);opacity:0;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s;z-index:1"></div>
+</div>
+
+<div id="root">
+
+<div class="relative min-h-screen bg-[#FFF7F1] font-sans antialiased">
+  <div class="bg-noise absolute inset-0 pointer-events-none"></div>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)] [background-size:16px_16px]"></div>
+    <div class="relative flex flex-col items-center max-w-md px-6 text-center">
+      <div class="relative w-80 h-48 flex items-center justify-center mb-6">
+        <svg class="absolute w-52 h-16 origin-right animate-needle-1" style="top: 8px; left: 10px;" viewBox="0 0 210 40" fill="none">
+          <rect x="0" y="14" width="160" height="5" rx="2.5" fill="#8B5E3C"/>
+          <rect x="0" y="13" width="160" height="2" rx="1" fill="#A0724B" opacity="0.5"/>
+          <rect x="140" y="12" width="30" height="9" rx="4" fill="#6B4226"/>
+          <rect x="140" y="11" width="30" height="3" rx="1.5" fill="#8B5E3C" opacity="0.6"/>
+          <path d="M 168 16 Q 178 6 185 10 Q 190 14 183 18 Q 178 22 170 19" fill="#D4A574" stroke="#8B5E3C" stroke-width="1.5"/>
+          <circle cx="183" cy="12" r="2" fill="#FFF7F1" opacity="0.6"/>
+        </svg>
+        <svg class="absolute w-52 h-16 origin-right animate-needle-2" style="bottom: 12px; left: 20px;" viewBox="0 0 210 40" fill="none">
+          <rect x="0" y="14" width="155" height="5" rx="2.5" fill="#9A6B42"/>
+          <rect x="0" y="13" width="155" height="2" rx="1" fill="#B08050" opacity="0.5"/>
+          <rect x="135" y="12" width="30" height="9" rx="4" fill="#7A4E2E"/>
+          <rect x="135" y="11" width="30" height="3" rx="1.5" fill="#9A6B42" opacity="0.6"/>
+          <path d="M 163 16 Q 173 6 180 10 Q 185 14 178 18 Q 173 22 165 19" fill="#D4A574" stroke="#9A6B42" stroke-width="1.5"/>
+          <circle cx="178" cy="12" r="2" fill="#FFF7F1" opacity="0.6"/>
+        </svg>
+        <div class="absolute w-24 h-24 rounded-full animate-yarn-roll" style="background: radial-gradient(circle at 35% 35%, #F0C4D0, #DFA8B4 40%, #C48A9A 80%, #A86E7E); box-shadow: 0 6px 20px rgba(168,110,126,0.35), inset 0 -4px 12px rgba(0,0,0,0.08);">
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 96 96">
+            <ellipse cx="48" cy="48" rx="38" ry="40" fill="none" stroke="#FFF7F1" stroke-width="1.2" opacity="0.35" transform="rotate(-20 48 48)"/>
+            <ellipse cx="48" cy="48" rx="30" ry="36" fill="none" stroke="#FFF7F1" stroke-width="1" opacity="0.25" transform="rotate(15 48 48)"/>
+            <ellipse cx="48" cy="48" rx="22" ry="30" fill="none" stroke="#FFF7F1" stroke-width="0.8" opacity="0.2" transform="rotate(-35 48 48)"/>
+            <ellipse cx="48" cy="48" rx="14" ry="22" fill="none" stroke="#FFF7F1" stroke-width="0.8" opacity="0.15" transform="rotate(40 48 48)"/>
+            <circle cx="48" cy="48" r="5" fill="#FFF7F1" opacity="0.4"/>
+            <path d="M 48 8 Q 70 20 72 48 Q 70 76 48 88" fill="none" stroke="#B07080" stroke-width="0.8" opacity="0.3"/>
+            <path d="M 48 8 Q 26 20 24 48 Q 26 76 48 88" fill="none" stroke="#B07080" stroke-width="0.8" opacity="0.3"/>
+          </svg>
+        </div>
+        <svg class="absolute w-full h-full pointer-events-none" viewBox="0 0 240 120">
+          <path class="thread-path" d="M 20 60 C 40 40, 60 40, 80 60 C 100 80, 120 80, 140 60 C 160 40, 180 40, 200 60" fill="none" stroke="#9A5B2A" stroke-width="3" stroke-linecap="round" stroke-dasharray="300"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-serif text-4xl tracking-wide text-[#70411B] flex items-center justify-center gap-1.5 font-semibold"><span>🧶</span> ऊनीverse</p>
+        <p class="font-sans text-xs tracking-widest text-[#9A5B2A] uppercase mt-2 select-none">"Don't Yawn, Just Yarn"</p>
+      </div>
+      <div class="w-56 h-1 bg-[#F4E9E1] rounded-full mt-8 overflow-hidden relative border border-[#70411B]/5">
+        <div class="h-full bg-gradient-to-r from-[#DFA8B4] to-[#9A5B2A] rounded-full" style="width:0%"></div>
+      </div>
+      <span class="font-serif italic text-[#70411B]/60 text-sm mt-3 font-medium" aria-hidden="true">Spinning cozy fibers... 0%</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out bg-transparent">
+      <div class="bg-[#70411B] text-[#FFF7F1] text-[10px] md:text-[11px] font-sans font-bold py-2 px-4 text-center tracking-wide border-b border-[#FFF7F1]/10 flex items-center justify-center gap-1.5 shadow-sm relative z-50">
+        <svg class="w-3.5 h-3.5 text-[#DFA8B4] shrink-0 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
+        <span>Shipping 🇮🇳 | No return / COD | Order at least 15 days prior 🧶 | Haldwani 🏔️</span>
+      </div>
+      <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between transition-all duration-500 py-5">
+        <button id="nav-logo" class="flex items-center gap-3 group cursor-pointer focus:outline-none">
+          <div class="relative w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden bg-[#EAAFB9]/20 border-2 border-[#70411B]/20 flex items-center justify-center shrink-0 shadow-md">
+            <picture><source srcset="assets/images/crochet_yarn_logo_1783009375471.webp" type="image/webp"><img  src="assets/images/crochet_yarn_logo_1783009375471.jpg" alt="ऊनीverse Logo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" referrerpolicy="no-referrer"  width="1024" height="1024" loading="eager"/></picture>
+            <div id="navbar-logo-fallback" class="hidden absolute inset-0 items-center justify-center bg-[#F4E9E1]"><span class="text-2xl">🧶</span></div>
+          </div>
+          <div class="flex flex-col items-start leading-none">
+            <span class="font-serif text-xl md:text-2xl font-bold tracking-wide text-[#70411B] group-hover:text-[#9A5B2A] transition-colors duration-300">ऊनीverse</span>
+            <span class="text-[10px] font-sans tracking-widest text-[#9A5B2A] uppercase font-bold mt-1.5 opacity-90">Don't Yawn, Just Yarn</span>
+          </div>
+        </button>
+        <div class="hidden lg:flex items-center gap-8 xl:gap-10">
+          <a href="index.html" class="relative font-sans text-sm tracking-wide font-medium py-1 cursor-pointer transition-all duration-300 text-[#70411B]/70 hover:text-[#70411B]">Home</a>
+          <a href="shop.html" class="relative font-sans text-sm tracking-wide font-medium py-1 cursor-pointer transition-all duration-300 text-[#70411B]/70 hover:text-[#70411B]">Shop</a>
+          <a href="custom.html" class="relative font-sans text-sm tracking-wide font-medium py-1 cursor-pointer transition-all duration-300 text-[#70411B] font-semibold">Custom Orders<span class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#9A5B2A] rounded-full"></span></a>
+          <a href="gallery.html" class="relative font-sans text-sm tracking-wide font-medium py-1 cursor-pointer transition-all duration-300 text-[#70411B]/70 hover:text-[#70411B]">Gallery</a>
+          <a href="about.html" class="relative font-sans text-sm tracking-wide font-medium py-1 cursor-pointer transition-all duration-300 text-[#70411B]/70 hover:text-[#70411B]">About Us</a>
+          <a href="contact.html" class="relative font-sans text-sm tracking-wide font-medium py-1 cursor-pointer transition-all duration-300 text-[#70411B]/70 hover:text-[#70411B]">Contact Us</a>
+        </div>
+        <div class="flex items-center gap-3.5 md:gap-5">
+          <button id="wishlist-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="View Wishlist"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
+          </button>
+          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </button>
+          <a href="custom.html" class="hidden md:flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-[#FFF7F1] border border-[#70411B]/15 text-[#70411B] rounded-full hover:bg-[#9A5B2A]/20 transition-all duration-300 cursor-pointer">
+            <svg class="w-3.5 h-3.5 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
+            <span>Custom Crochet</span>
+          </a>
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 text-[#70411B] hover:bg-[#F4E9E1] rounded-full transition-colors cursor-pointer" aria-label="Toggle menu"> <svg aria-hidden="true" class="w-5.5 h-5.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#FFF7F1] pt-28 px-8 flex flex-col justify-between pb-12 lg:hidden">
+      <div class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)] [background-size:16px_16px]"></div>
+      <div class="flex flex-col gap-6">
+        <a href="index.html" class="text-left font-serif text-3xl font-semibold tracking-wide text-[#9A5B2A]">Home</a>
+        <a href="shop.html" class="text-left font-serif text-3xl font-semibold tracking-wide text-[#70411B]/70">Shop</a>
+        <a href="custom.html" class="text-left font-serif text-3xl font-semibold tracking-wide text-[#9A5B2A]">Custom Orders</a>
+        <a href="gallery.html" class="text-left font-serif text-3xl font-semibold tracking-wide text-[#70411B]/70">Gallery</a>
+        <a href="about.html" class="text-left font-serif text-3xl font-semibold tracking-wide text-[#70411B]/70">About Us</a>
+        <a href="contact.html" class="text-left font-serif text-3xl font-semibold tracking-wide text-[#70411B]/70">Contact Us</a>
+      </div>
+      <div class="border-t border-[#70411B]/10 pt-8 flex flex-col gap-4">
+        <a href="custom.html" class="w-full py-3 bg-[#9A5B2A] hover:bg-[#9A5B2A]/90 text-white font-semibold rounded-xl flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
+          <span>Knit a Custom Design</span>
+        </a>
+        <p class="text-center text-xs text-[#70411B]/50 font-sans tracking-wide">🌸 Handmade Stories, One Stitch at a Time</p>
+      </div>
+    </div>
+
+    <main class="flex-grow" id="main-content">
+    <div class="bg-knitted-texture">
+
+      <!-- Page Content — matches React CustomOrder.tsx exactly -->
+      <div class="min-h-screen bg-[#FFF7F1] pt-32 pb-24 overflow-hidden">
+        <!-- Background Stitches -->
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)]" style="background-size:16px 16px;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          
+          <!-- Header Section -->
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#9A5B2A]/20 border border-[#DFA8B4]/40 text-[#70411B] text-xs font-semibold tracking-wider uppercase mb-5">
+              <svg class="w-3.5 h-3.5 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+              <span>Interactive Customizer Studio</span>
+            </div>
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[#70411B] tracking-tight leading-tight mb-4">
+              Custom Crochet Creations
+            </h1>
+            <p class="font-sans text-[#70411B]/80 text-base max-w-xl mx-auto leading-relaxed">
+              Dream up your perfect knits. Use our interactive loom below to design instantly, or request a bespoke custom curation via WhatsApp.
+            </p>
+          </div>
+
+          <!-- SECTION 1: INTERACTIVE DESIGNER STUDIO PLAYGROUND -->
+          <div class="bg-white rounded-[40px] p-6 md:p-12 border border-[#70411B]/15 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24 relative">
+            <!-- Accent decoration threads -->
+            <div class="absolute inset-3 border border-dashed border-[#70411B]/10 rounded-[32px] pointer-events-none"></div>
+
+            <!-- PLAYGROUND LEFT: Dynamic Live Render Canvas -->
+            <div class="lg:col-span-6 flex flex-col items-center justify-center bg-[#FFF7F1] rounded-[30px] p-8 min-h-[380px] border border-[#70411B]/5 shadow-inner relative" style="background-image: radial-gradient(circle at 50% 50%, rgba(223,168,180,0.08) 0%, transparent 70%), radial-gradient(circle at 20% 80%, rgba(169,193,165,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(212,165,116,0.05) 0%, transparent 50%);">
+              <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wider text-[#70411B]/60 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#A9C1A5] animate-pulse"></span>
+                &#x1F9F6; Live Custom Loom
+              </span>
+
+              <!-- Render customizable crochet bases -->
+              <div id="playground-render" class="relative w-64 h-64 flex items-center justify-center">
+                <!-- Default: Coaster -->
+                <div id="render-coaster" class="render-base w-48 h-48 rounded-full border-[6px] border-white/60 flex items-center justify-center relative" style="background-color:#F7D8DE; box-shadow: 0 8px 32px rgba(112,65,27,0.12), 0 2px 8px rgba(112,65,27,0.08), inset 0 2px 6px rgba(255,255,255,0.4), inset 0 -2px 6px rgba(0,0,0,0.06);">
+                  <!-- Knit texture rings -->
+                  <div class="coaster-stitch-ring absolute" style="inset: 8px;"></div>
+                  <div class="coaster-stitch-ring absolute" style="inset: 18px;"></div>
+                  <div class="coaster-stitch-ring absolute" style="inset: 28px;"></div>
+                  <!-- Inner double border -->
+                  <div class="absolute inset-[10px] border-2 border-double border-white/35 rounded-full flex items-center justify-center">
+                    <div class="absolute inset-[6px] border border-dashed border-white/20 rounded-full flex items-center justify-center">
+                      <div id="coaster-label" class="w-10 h-10 bg-white/50 rounded-full shadow-sm backdrop-blur-sm flex items-center justify-center text-sm font-mono font-bold text-[#70411B]">&#x2615;&#xFE0F;</div>
+                    </div>
+                  </div>
+                  <div id="coaster-accessory" class="absolute -top-3 -right-3 text-4xl drop-shadow-lg hidden" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));">&#x1F338;</div>
+                </div>
+
+                <!-- Octopus (hidden by default) -->
+                <div id="render-octopus" class="relative flex-col items-center justify-center hidden">
+                  <div id="octo-head" class="render-base w-40 h-40 rounded-full shadow-lg border-2 border-white/40 flex flex-col items-center justify-center relative" style="background-color:#F7D8DE; box-shadow: 0 8px 32px rgba(112,65,27,0.12), 0 2px 8px rgba(112,65,27,0.08), inset 0 3px 8px rgba(255,255,255,0.4), inset 0 -3px 8px rgba(0,0,0,0.06);">
+                    <div class="flex gap-6 mb-1">
+                      <div class="w-4 h-4 bg-[#70411B] rounded-full relative flex items-center justify-center shadow-sm"><div class="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-white rounded-full"></div></div>
+                      <div class="w-4 h-4 bg-[#70411B] rounded-full relative flex items-center justify-center shadow-sm"><div class="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-white rounded-full"></div></div>
+                    </div>
+                    <div class="absolute inset-x-8 top-20 flex justify-between px-2">
+                      <div class="w-5 h-2.5 rounded-full" style="background-color: rgba(223,168,180,0.6); filter:blur(2px)"></div>
+                      <div class="w-5 h-2.5 rounded-full" style="background-color: rgba(223,168,180,0.6); filter:blur(2px)"></div>
+                    </div>
+                    <span class="text-2xl font-bold text-[#70411B] select-none -mt-1.5">&#x203F;</span>
+                    <div id="octo-label" class="absolute bottom-3 bg-white/80 backdrop-blur-sm border border-[#70411B]/15 px-2.5 py-1 rounded-full text-[8px] font-bold text-[#70411B] tracking-wider uppercase shadow-sm hidden">&#x1F3F7;&#xFE0F; <span id="octo-label-text"></span></div>
+                  </div>
+                  <div class="flex gap-2 -mt-4 relative z-10" id="octo-tentacles">
+                    <div class="octo-tentacle w-6 h-6 rounded-full shadow-sm border border-white/30" style="background-color:#F7D8DE; box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);"></div>
+                    <div class="octo-tentacle w-6 h-6 rounded-full shadow-sm border border-white/30" style="background-color:#F7D8DE; box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);"></div>
+                    <div class="octo-tentacle w-6 h-6 rounded-full shadow-sm border border-white/30" style="background-color:#F7D8DE; box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);"></div>
+                    <div class="octo-tentacle w-6 h-6 rounded-full shadow-sm border border-white/30" style="background-color:#F7D8DE; box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);"></div>
+                    <div class="octo-tentacle w-6 h-6 rounded-full shadow-sm border border-white/30" style="background-color:#F7D8DE; box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);"></div>
+                    <div class="octo-tentacle w-6 h-6 rounded-full shadow-sm border border-white/30" style="background-color:#F7D8DE; box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);"></div>
+                  </div>
+                  <div id="octo-accessory" class="absolute top-[-14px] text-4xl hidden" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));">&#x1F338;</div>
+                </div>
+
+                <!-- Hair Bow (hidden by default) -->
+                <div id="render-hairbow" class="relative flex-col items-center justify-center w-52 h-44 hidden">
+                  <div class="flex items-center relative">
+                    <div id="bow-left" class="w-24 h-28 rounded-[24px] border border-white/40 shadow-lg origin-right" style="background-color:#F7D8DE; transform:rotate(-12deg); background-image: radial-gradient(ellipse at 40% 30%, rgba(255,255,255,0.3) 0%, transparent 60%), linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);"></div>
+                    <div id="bow-center" class="bow-center w-10 h-10 rounded-xl bg-white/40 border-2 border-white shadow-inner flex items-center justify-center relative z-20 mx-[-20px]" style="background-color:#F7D8DE;">
+                      <div class="w-3 h-3 bg-white/60 rounded-full"></div>
+                    </div>
+                    <div id="bow-right" class="w-24 h-28 rounded-[24px] border border-white/40 shadow-lg origin-left" style="background-color:#F7D8DE; transform:rotate(12deg); background-image: radial-gradient(ellipse at 60% 30%, rgba(255,255,255,0.3) 0%, transparent 60%), linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);"></div>
+                  </div>
+                  <div class="flex gap-16 mt-[-10px] relative z-10 w-full justify-center px-4">
+                    <div id="bow-tail-l" class="w-4 h-16 rounded-b-full shadow-sm" style="background-color:#F7D8DE; transform:rotate(-15deg); transform-origin:top; background-image: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.04) 100%);"></div>
+                    <div id="bow-tail-r" class="w-4 h-16 rounded-b-full shadow-sm" style="background-color:#F7D8DE; transform:rotate(15deg); transform-origin:top; background-image: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.04) 100%);"></div>
+                  </div>
+                  <span id="bow-label" class="absolute bottom-1 bg-white/80 backdrop-blur-sm border border-[#70411B]/15 px-2.5 py-1 rounded-full text-[8px] font-bold text-[#70411B] tracking-wider uppercase z-20 hidden shadow-sm">&#x1F9F5; <span id="bow-label-text"></span></span>
+                  <div id="bow-accessory" class="absolute top-2 right-4 text-4xl hidden" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));">&#x1F338;</div>
+                </div>
+              </div>
+
+              <!-- Design overview labels -->
+              <div class="mt-8 text-center text-xs text-[#70411B]/60 font-medium">
+                Stitched with <span class="font-bold text-[#70411B]">100% Organic Cotton Thread</span> &#x2022; Pre-arranged setup
+              </div>
+            </div>
+
+            <!-- PLAYGROUND RIGHT: Loom Controls Selector Grid -->
+            <div class="lg:col-span-6 flex flex-col justify-between h-full">
+              <div>
+                
+                <!-- STEP 1: SELECT PRODUCT BASE -->
+                <div class="mb-6">
+                  <span class="text-[10px] font-bold tracking-wider uppercase text-[#9A5B2A] block mb-3">
+                    Step 1: Choose Base Product
+                  </span>
+                  <div class="grid grid-cols-3 gap-2.5">
+                    <button data-base="Coaster" class="base-btn py-3 rounded-xl border-2 font-serif text-sm font-bold tracking-wide transition-all cursor-pointer border-[#70411B] bg-[#70411B]/5 text-[#70411B]">
+                      Coaster (&#8377;450)
+                    </button>
+                    <button data-base="Octo Plushie" class="base-btn py-3 rounded-xl border-2 font-serif text-sm font-bold tracking-wide transition-all cursor-pointer border-[#70411B]/10 hover:border-[#70411B]/40 text-[#70411B]/60">
+                      Octopus (&#8377;750)
+                    </button>
+                    <button data-base="Hair Bow" class="base-btn py-3 rounded-xl border-2 font-serif text-sm font-bold tracking-wide transition-all cursor-pointer border-[#70411B]/10 hover:border-[#70411B]/40 text-[#70411B]/60">
+                      Hair Bow (&#8377;350)
+                    </button>
+                  </div>
+                </div>
+
+                <!-- STEP 2: SELECT COLOR -->
+                <div class="mb-6">
+                  <span class="text-[10px] font-bold tracking-wider uppercase text-[#9A5B2A] block mb-3">
+                    Step 2: Choose Yarn Color (<span id="color-name-display">Peach Sorbet</span>)
+                  </span>
+                  <div class="flex gap-3" id="color-swatches">
+                    <button data-color="Peach Sorbet" data-hex="#F7D8DE" class="color-btn relative w-9 h-9 rounded-full border-2 transition-all cursor-pointer flex items-center justify-center" style="background-color:#F7D8DE; border-color:#70411B;">
+                      <svg class="w-4 h-4 text-white" style="filter:drop-shadow(0 1px 1px rgba(0,0,0,0.4))" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+                    </button>
+                    <button data-color="Warm Beige" data-hex="#F4E9E1" class="color-btn relative w-9 h-9 rounded-full border-2 transition-all cursor-pointer flex items-center justify-center" style="background-color:#F4E9E1; border-color:transparent;">
+                    </button>
+                    <button data-color="Coffee Brown" data-hex="#9A5B2A" class="color-btn relative w-9 h-9 rounded-full border-2 transition-all cursor-pointer flex items-center justify-center" style="background-color:#9A5B2A; border-color:transparent;">
+                    </button>
+                    <button data-color="Sage Green" data-hex="#A9C1A5" class="color-btn relative w-9 h-9 rounded-full border-2 transition-all cursor-pointer flex items-center justify-center" style="background-color:#A9C1A5; border-color:transparent;">
+                    </button>
+                    <button data-color="Cream White" data-hex="#FFF7F1" class="color-btn relative w-9 h-9 rounded-full border-2 transition-all cursor-pointer flex items-center justify-center" style="background-color:#FFF7F1; border-color:transparent;">
+                    </button>
+                  </div>
+                </div>
+
+                <!-- STEP 3: ACCENT DECAL ACCESSORY -->
+                <div class="mb-6">
+                  <span class="text-[10px] font-bold tracking-wider uppercase text-[#9A5B2A] block mb-3">
+                    Step 3: Stitched Accent Decoration (+&#8377;100)
+                  </span>
+                  <div class="grid grid-cols-4 gap-2" id="accessory-grid">
+                    <button data-accessory="Flower Crown" class="acc-btn p-2.5 rounded-xl border-2 transition-all cursor-pointer flex flex-col items-center justify-center gap-1.5 border-[#70411B] bg-[#70411B]/5 text-[#70411B]">
+                      <span class="text-xl">&#x1F338;</span>
+                      <span class="text-[9px] font-semibold tracking-tight text-center leading-tight">Flower Crown</span>
+                    </button>
+                    <button data-accessory="Cosy Scarf" class="acc-btn p-2.5 rounded-xl border-2 transition-all cursor-pointer flex flex-col items-center justify-center gap-1.5 border-[#70411B]/10 hover:border-[#70411B]/40 text-[#70411B]/50">
+                      <span class="text-xl">&#x1F9E3;</span>
+                      <span class="text-[9px] font-semibold tracking-tight text-center leading-tight">Cosy Scarf</span>
+                    </button>
+                    <button data-accessory="Mini Satin Bow" class="acc-btn p-2.5 rounded-xl border-2 transition-all cursor-pointer flex flex-col items-center justify-center gap-1.5 border-[#70411B]/10 hover:border-[#70411B]/40 text-[#70411B]/50">
+                      <span class="text-xl">&#x1F380;</span>
+                      <span class="text-[9px] font-semibold tracking-tight text-center leading-tight">Mini Satin Bow</span>
+                    </button>
+                    <button data-accessory="None" class="acc-btn p-2.5 rounded-xl border-2 transition-all cursor-pointer flex flex-col items-center justify-center gap-1.5 border-[#70411B]/10 hover:border-[#70411B]/40 text-[#70411B]/50">
+                      <span class="text-xl">&#x2728;</span>
+                      <span class="text-[9px] font-semibold tracking-tight text-center leading-tight">None</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- STEP 4: CUSTOM STITCHED LABEL EMBROIDERY -->
+                <div class="mb-8">
+                  <span class="text-[10px] font-bold tracking-wider uppercase text-[#9A5B2A] block mb-2">
+                    Step 4: Custom Stitched Name Tag (+&#8377;120)
+                  </span>
+                  <input
+                    id="text-label-input"
+                    type="text"
+                    maxlength="10"
+                    placeholder="Type tag (e.g., COZY, MUMU)..."
+                    class="w-full border-2 border-[#70411B]/15 focus:border-[#70411B] bg-[#FFF7F1]/20 rounded-xl px-4 py-3 text-sm text-[#70411B] outline-none tracking-widest font-mono font-bold placeholder-[#70411B]/45"
+                  />
+                  <p class="text-[10px] text-[#70411B]/55 mt-1.5 italic">
+                    * Name tag is delicately stitched into the side rib of the item. Max 10 letters.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- ACTION FOOTER LEDGER -->
+              <div class="pt-4 border-t border-[#70411B]/10">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-serif font-bold text-[#70411B]">Total Cost for Creation:</span>
+                  <span id="price-display" class="font-serif text-2xl font-bold text-[#70411B]">&#8377;550</span>
+                </div>
+                <button
+                  id="add-custom-to-cart"
+                  class="w-full py-4 text-white font-sans font-bold tracking-wide rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  style="background: linear-gradient(to right, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.3);"
+                  onmouseover="this.style.background='linear-gradient(to right, #c9899f, #DFA8B4)'; this.style.boxShadow='0 8px 25px rgba(223,168,180,0.5)'"
+                  onmouseout="this.style.background='linear-gradient(to right, #DFA8B4, #c9899f)'; this.style.boxShadow='0 4px 15px rgba(223,168,180,0.3)'"
+                >
+                  <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                  <span>Knit My Design &amp; Add to Cart</span>
+                </button>
+
+                <div id="custom-added-success" class="hidden mt-3 p-3.5 rounded-xl bg-[#A9C1A5]/25 border border-[#A9C1A5]/40 text-[#70411B] text-xs font-semibold items-center gap-2 justify-center">
+                  <span>&#x1F9F6;</span>
+                  <span>Added your custom creation to cart! Stitches lock loaded.</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- SECTION 1.5: CUSTOM DESIGN DESCRIPTION -->
+          <div class="bg-[#F4E9E1] rounded-[36px] p-6 md:p-10 border border-[#70411B]/15 shadow-md mb-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)]" style="background-size:16px 16px;"></div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-white text-[#70411B] rounded-2xl shadow border border-[#70411B]/5 shrink-0">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <div>
+                  <h3 class="font-serif text-2xl font-bold text-[#70411B]">About Your Custom Creation</h3>
+                  <p class="text-xs text-[#70411B]/70 mt-1">Every piece is hand-stitched with care</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#9A5B2A]/25 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg class="w-4 h-4 text-[#70411B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-serif font-bold text-[#70411B] text-sm">100% Organic Materials</h4>
+                      <p class="text-[11px] text-[#70411B]/70 leading-relaxed mt-0.5">Crafted with unbleached Coimbatore cotton and premium Himalayan merino wool blends. Safe for all ages.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#A9C1A5]/25 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg class="w-4 h-4 text-[#70411B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-serif font-bold text-[#70411B] text-sm">10-18 Hours of Craft</h4>
+                      <p class="text-[11px] text-[#70411B]/70 leading-relaxed mt-0.5">Each creation requires 10-18 continuous hours of row-by-row artisanal stitching. No machines, all hands.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#9A5B2A]/25 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg class="w-4 h-4 text-[#70411B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-serif font-bold text-[#70411B] text-sm">Personalized with Love</h4>
+                      <p class="text-[11px] text-[#70411B]/70 leading-relaxed mt-0.5">Add stitched name tags, choose your yarn palette, and pick accent decorations to make it truly yours.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#A9C1A5]/25 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg class="w-4 h-4 text-[#70411B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-serif font-bold text-[#70411B] text-sm">Made in Haldwani</h4>
+                      <p class="text-[11px] text-[#70411B]/70 leading-relaxed mt-0.5">Designed and handcrafted in our Haldwani studio, nestled in the Kumaon hills of Uttarakhand, India.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#9A5B2A]/25 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg class="w-4 h-4 text-[#70411B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-serif font-bold text-[#70411B] text-sm">Eco Packaging</h4>
+                      <p class="text-[11px] text-[#70411B]/70 leading-relaxed mt-0.5">Packed with organic lavender stems and tied with handmade unbleached ribbons. A botanical experience.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#A9C1A5]/25 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg class="w-4 h-4 text-[#70411B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-serif font-bold text-[#70411B] text-sm">WhatsApp Updates</h4>
+                      <p class="text-[11px] text-[#70411B]/70 leading-relaxed mt-0.5">Get real-time progress updates via WhatsApp as your creation comes to life, stitch by stitch.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-[#70411B]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2 text-xs text-[#70411B]/70">
+                  <svg class="w-4 h-4 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                  <span class="font-semibold">Lead time: 7-14 days</span> <span class="text-[#70411B]/50">|</span> <span>No returns on custom orders</span>
+                </div>
+                <a href="https://wa.me/919876543210?text=Hi%20Oouniverse!%20I%27d%20like%20to%20discuss%20a%20custom%20crochet%20order." target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#1EBE57] text-white text-xs font-bold rounded-xl transition-all shadow-sm">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                  <span>Chat with Us on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: PROCESS OVERVIEW FLOW CHART -->
+          <div class="mb-24">
+            <h2 class="font-serif text-3xl font-bold text-[#70411B] text-center mb-12">
+              The Custom Craft Process
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative">
+              <!-- Horizontal line for desktop flow -->
+              <div class="hidden md:block absolute top-16 left-[16.666%] right-[16.666%] h-0.5 bg-[#70411B]/10 z-0"></div>
+
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full bg-[#9A5B2A]/30 text-[#70411B] flex items-center justify-center font-serif text-xl font-bold mb-4 border border-[#70411B]/10 shadow">
+                  1
+                </div>
+                <h4 class="font-serif font-bold text-[#70411B] text-lg mb-2">Design &amp; loom</h4>
+                <p class="text-xs text-[#70411B]/70 max-w-[220px] leading-relaxed">
+                  Choose base plushies, accessories, or home decor structures. Decide on organic colors.
+                </p>
+              </div>
+
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full bg-[#FFF7F1] text-[#70411B] flex items-center justify-center font-serif text-xl font-bold mb-4 border-2 border-[#DFA8B4] shadow">
+                  2
+                </div>
+                <h4 class="font-serif font-bold text-[#70411B] text-lg mb-2">Artisanal Stitching</h4>
+                <p class="text-xs text-[#70411B]/70 max-w-[220px] leading-relaxed">
+                  Our designer works over 10-18 continuous hours row by row to knit your design.
+                </p>
+              </div>
+
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full bg-[#A9C1A5]/30 text-[#70411B] flex items-center justify-center font-serif text-xl font-bold mb-4 border border-[#70411B]/10 shadow">
+                  3
+                </div>
+                <h4 class="font-serif font-bold text-[#70411B] text-lg mb-2">Fibre Infused Pack</h4>
+                <p class="text-xs text-[#70411B]/70 max-w-[220px] leading-relaxed">
+                  Packed with organic lavender stems to keep knits fresh, tied with handmade unbleached ribbons.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 3: BESPOKE CUSTOM ENQUIRY FORM / WHATSAPP INTEGRATION -->
+          <div class="max-w-3xl mx-auto">
+            <div class="bg-[#F4E9E1] rounded-[36px] p-6 md:p-10 border border-[#70411B]/15 shadow-md">
+              <div class="flex items-start gap-4 mb-8">
+                <div class="p-3 bg-white text-[#70411B] rounded-2xl shadow border border-[#70411B]/5 shrink-0">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                  <h3 class="font-serif text-2xl font-bold text-[#70411B]">
+                    Bespoke Crochet Inquiry Form
+                  </h3>
+                  <p class="text-xs text-[#70411B]/75 leading-relaxed mt-1">
+                    Have a specific vision, custom sweater, or baby shower gift kit in mind? Provide details below. Clicking submit will automatically package your request and redirect you to WhatsApp to connect with our loom artist!
+                  </p>
+                </div>
+              </div>
+
+              <form id="custom-inquiry-form" class="grid grid-cols-1 md:grid-cols-2 gap-5" novalidate>
+                <div class="flex flex-col gap-1">
+                  <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider">Your Full Name *</label>
+                  <input
+                    type="text"
+                    required
+                    name="name"
+                    data-rules="required,min:2"
+                    placeholder="e.g. Lavender Watson"
+                    class="border-2 border-[#70411B]/15 focus:border-[#70411B] rounded-xl px-4 py-3 text-sm bg-white outline-none text-[#70411B]"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider">Your Email *</label>
+                  <input
+                    type="email"
+                    required
+                    name="email"
+                    data-rules="required,email"
+                    placeholder="e.g. lavender@cozy.com"
+                    class="border-2 border-[#70411B]/15 focus:border-[#70411B] rounded-xl px-4 py-3 text-sm bg-white outline-none text-[#70411B]"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider">WhatsApp Number *</label>
+                  <input
+                    type="tel"
+                    required
+                    name="whatsapp"
+                    data-rules="required"
+                    placeholder="e.g. 15550199"
+                    class="border-2 border-[#70411B]/15 focus:border-[#70411B] rounded-xl px-4 py-3 text-sm bg-white outline-none text-[#70411B]"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider">Yarn Palette Vibe</label>
+                  <select
+                    name="palette"
+                    class="border-2 border-[#70411B]/15 focus:border-[#70411B] rounded-xl px-4 py-3 text-sm bg-white outline-none text-[#70411B] font-medium"
+                  >
+                    <option>Pastel Pink &amp; Sage</option>
+                    <option>Warm Mocha &amp; Beige</option>
+                    <option>Sunny Sunflower &amp; Cream</option>
+                    <option>Lavender Dream &amp; Mint</option>
+                    <option>Surprise Me (Vibrant Organics)</option>
+                  </select>
+                </div>
+
+                <div class="md:col-span-2 flex flex-col gap-1">
+                  <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider">Describe Your Crochet Dream *</label>
+                  <textarea
+                    required
+                    name="concept"
+                    data-rules="required,min:10"
+                    rows="4"
+                    placeholder="Describe shapes, sizes, colors, or references. For example: 'A cozy matching cardigan for my cat and me...'"
+                    class="border-2 border-[#70411B]/15 focus:border-[#70411B] rounded-xl px-4 py-3 text-sm bg-white outline-none resize-none text-[#70411B]"
+                  ></textarea>
+                </div>
+
+                <div class="md:col-span-2 mt-2">
+                  <button
+                    type="submit"
+                    id="inquiry-submit-btn"
+                    class="w-full py-4 bg-[#70411B] hover:bg-[#9A5B2A] text-white font-sans font-bold tracking-wide rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300"
+                  >
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span id="inquiry-btn-text">Submit Inquiry via WhatsApp</span>
+                  </button>
+                </div>
+              </form>
+
+              <div id="inquiry-redirect-msg" class="hidden mt-4 p-3 bg-white border border-[#70411B]/10 rounded-xl text-xs text-[#70411B]/80 font-medium items-center gap-2 justify-center">
+                <svg class="w-4 h-4 text-[#DFA8B4]" style="animation:bounce 1s infinite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                <span>Redirecting securely to WhatsApp chat with Oouniverse team...</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    </main>
+
+    <!-- Product Quick View Modal -->
+    <div id="product-modal" class="product-modal-overlay" role="dialog" aria-modal="true" aria-label="Product quick view">
+      <div class="product-modal-backdrop" id="product-modal-backdrop"></div>
+      <div class="product-modal-content">
+        <div class="sticky top-0 right-0 z-10 flex justify-end p-4">
+          <button id="product-modal-close" class="p-2 rounded-full bg-white shadow-md border border-[#70411B]/10 text-[#70411B] hover:bg-[#F4E9E1] transition-all cursor-pointer"> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        </div>
+        <div id="product-modal-content" class="px-6 pb-6"><p class="text-[#70411B]/60 font-sans text-sm">Select a product to view details.</p></div>
+      </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" class="drawer-overlay"></div>
+    <div id="cart-drawer" class="drawer-panel" role="dialog" aria-modal="true" aria-label="Shopping Cart">
+      <div class="drawer-header">
+        <h3 class="drawer-title">🧶 Your Cozy Cart</h3>
+        <button id="cart-drawer-close" class="drawer-close"> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      </div>
+      <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <div id="cart-empty" class="flex flex-col items-center justify-center h-full text-center py-12">
+          <svg class="w-16 h-16 text-[#DFA8B4]/40 mb-4 animate-empty-float" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <p class="text-[#70411B]/50 font-serif text-lg">Your cart is empty</p>
+          <p class="text-xs text-[#70411B]/40 font-sans mt-1">Add some cozy crochet!</p>
+        </div>
+      </div>
+      <div id="cart-footer" class="border-t border-[#70411B]/10 p-6 hidden">
+        <div class="flex justify-between text-sm font-semibold text-[#70411B] mb-4"><span>Total:</span><span id="cart-total">&#8377;0</span></div>
+        <a id="cart-checkout" style="background-color:#25D366" class="w-full py-3 text-white text-sm font-bold rounded-xl flex items-center justify-center gap-2 transition-all"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Order on WhatsApp</span></a></div></div><!-- Wishlist Drawer -->
+    <div id="wishlist-overlay" class="drawer-overlay" style="z-index: 40;"></div>
+    <div id="wishlist-drawer" class="drawer-panel" role="dialog" aria-modal="true" aria-label="Wishlist" style="z-index: 50;">
+      <div class="drawer-header">
+        <h3 class="drawer-title">Your Wishlist</h3>
+        <button id="wishlist-drawer-close" class="drawer-close"> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      </div>
+      <div id="wishlist-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <div id="wishlist-empty" class="flex flex-col items-center justify-center h-full text-center py-12">
+          <svg class="w-16 h-16 text-[#DFA8B4]/40 mb-4 animate-empty-float" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
+          <p class="text-[#70411B]/50 font-serif text-lg">Your wishlist is empty</p>
+          <p class="text-xs text-[#70411B]/40 font-sans mt-1">Save your favorites here!</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="cart-toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 bg-[#70411B] text-white px-5 py-3 rounded-xl shadow-lg text-xs font-semibold flex items-center gap-2 transform translate-y-4 opacity-0 transition-all duration-500 pointer-events-none"><svg class="w-4 h-4 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg><span id="cart-toast-msg">Added to cart!</span></div>
+
+    <script>
+    /* ── CUSTOM ORDER PLAYGROUND (matches React CustomOrder.tsx) ────────── */
+    document.addEventListener('DOMContentLoaded', function() {
+      var state = { base: 'Coaster', color: 'Peach Sorbet', hex: '#F7D8DE', accessory: 'Flower Crown', label: '' };
+      var accessoryIcons = { 'Flower Crown': '\u{1F338}', 'Cosy Scarf': '\u{1F9E3}', 'Mini Satin Bow': '\u{1F380}', 'None': '\u2728' };
+
+      function calcPrice() {
+        var base = state.base === 'Octo Plushie' ? 750 : state.base === 'Hair Bow' ? 350 : 450;
+        var acc = state.accessory === 'None' ? 0 : 100;
+        var lbl = state.label.length > 0 ? 120 : 0;
+        return base + acc + lbl;
+      }
+
+      function updateUI() {
+        /* Update price */
+        document.getElementById('price-display').textContent = '\u20B9' + calcPrice().toLocaleString('en-IN');
+
+        /* Show/hide renders */
+        document.getElementById('render-coaster').style.display = state.base === 'Coaster' ? 'flex' : 'none';
+        document.getElementById('render-octopus').style.display = state.base === 'Octo Plushie' ? 'flex' : 'none';
+        document.getElementById('render-hairbow').style.display = state.base === 'Hair Bow' ? 'flex' : 'none';
+
+        /* Update colors on all renders */
+        var coaster = document.getElementById('render-coaster');
+        if (coaster) coaster.style.backgroundColor = state.hex;
+
+        var octoHead = document.getElementById('octo-head');
+        if (octoHead) octoHead.style.backgroundColor = state.hex;
+        var tentacles = document.querySelectorAll('#octo-tentacles > div');
+        tentacles.forEach(function(t) { t.style.backgroundColor = state.hex; });
+
+        var bowL = document.getElementById('bow-left');
+        var bowC = document.getElementById('bow-center');
+        var bowR = document.getElementById('bow-right');
+        var tailL = document.getElementById('bow-tail-l');
+        var tailR = document.getElementById('bow-tail-r');
+        if (bowL) bowL.style.backgroundColor = state.hex;
+        if (bowC) bowC.style.backgroundColor = state.hex;
+        if (bowR) bowR.style.backgroundColor = state.hex;
+        if (tailL) tailL.style.backgroundColor = state.hex;
+        if (tailR) tailR.style.backgroundColor = state.hex;
+
+        /* Update accessory icons */
+        var icon = accessoryIcons[state.accessory] || '';
+        var coasterAcc = document.getElementById('coaster-accessory');
+        var octoAcc = document.getElementById('octo-accessory');
+        var bowAcc = document.getElementById('bow-accessory');
+        if (coasterAcc) { coasterAcc.textContent = icon; coasterAcc.classList.toggle('hidden', state.accessory === 'None'); }
+        if (octoAcc) { octoAcc.textContent = icon; octoAcc.classList.toggle('hidden', state.accessory === 'None'); }
+        if (bowAcc) { bowAcc.textContent = icon; bowAcc.classList.toggle('hidden', state.accessory === 'None'); }
+
+        /* Update labels */
+        var coasterLbl = document.getElementById('coaster-label');
+        var octoLbl = document.getElementById('octo-label');
+        var octoLblTxt = document.getElementById('octo-label-text');
+        var bowLbl = document.getElementById('bow-label');
+        var bowLblTxt = document.getElementById('bow-label-text');
+        if (state.label) {
+          if (coasterLbl) coasterLbl.textContent = state.label.slice(0, 4);
+          if (octoLbl) { octoLbl.classList.remove('hidden'); octoLblTxt.textContent = state.label.slice(0, 6); }
+          if (bowLbl) { bowLbl.classList.remove('hidden'); bowLblTxt.textContent = state.label.slice(0, 5); }
+        } else {
+          if (coasterLbl) coasterLbl.textContent = '\u2615\uFE0F';
+          if (octoLbl) octoLbl.classList.add('hidden');
+          if (bowLbl) bowLbl.classList.add('hidden');
+        }
+
+        /* Update base buttons */
+        document.querySelectorAll('.base-btn').forEach(function(btn) {
+          var active = btn.getAttribute('data-base') === state.base;
+          btn.className = 'base-btn py-3 rounded-xl border-2 font-serif text-sm font-bold tracking-wide transition-all cursor-pointer ' +
+            (active ? 'border-[#70411B] bg-[#70411B]/5 text-[#70411B]' : 'border-[#70411B]/10 hover:border-[#70411B]/40 text-[#70411B]/60');
+        });
+
+        /* Update color swatches */
+        document.querySelectorAll('.color-btn').forEach(function(btn) {
+          var active = btn.getAttribute('data-color') === state.color;
+          btn.style.borderColor = active ? '#70411B' : 'transparent';
+          btn.innerHTML = active ? '<svg class="w-4 h-4 text-white" style="filter:drop-shadow(0 1px 1px rgba(0,0,0,0.4))" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>' : '';
+        });
+        document.getElementById('color-name-display').textContent = state.color;
+
+        /* Update accessory buttons */
+        document.querySelectorAll('.acc-btn').forEach(function(btn) {
+          var active = btn.getAttribute('data-accessory') === state.accessory;
+          btn.className = 'acc-btn p-2.5 rounded-xl border-2 transition-all cursor-pointer flex flex-col items-center justify-center gap-1.5 ' +
+            (active ? 'border-[#70411B] bg-[#70411B]/5 text-[#70411B]' : 'border-[#70411B]/10 hover:border-[#70411B]/40 text-[#70411B]/50');
+        });
+      }
+
+      /* Base buttons */
+      document.querySelectorAll('.base-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          state.base = this.getAttribute('data-base');
+          updateUI();
+        });
+      });
+
+      /* Color buttons */
+      document.querySelectorAll('.color-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          state.color = this.getAttribute('data-color');
+          state.hex = this.getAttribute('data-hex');
+          updateUI();
+        });
+      });
+
+      /* Accessory buttons */
+      document.querySelectorAll('.acc-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          state.accessory = this.getAttribute('data-accessory');
+          updateUI();
+        });
+      });
+
+      /* Text label input */
+      var labelInput = document.getElementById('text-label-input');
+      if (labelInput) {
+        labelInput.addEventListener('input', function() {
+          state.label = this.value.toUpperCase();
+          updateUI();
+        });
+      }
+
+      /* Add to cart */
+      document.getElementById('add-custom-to-cart').addEventListener('click', function() {
+        var customDetails = { baseProduct: state.base, yarnColor: state.color, accessory: state.accessory, textLabel: state.label, price: calcPrice() };
+        /* Use existing cart system if available */
+        if (typeof cartAdd === 'function') {
+          cartAdd('custom-' + state.base.toLowerCase().replace(/\s+/g, '-'), 1, state.color);
+        }
+        var successEl = document.getElementById('custom-added-success');
+        successEl.classList.remove('hidden');
+        successEl.style.display = 'flex';
+        setTimeout(function() { successEl.classList.add('hidden'); successEl.style.display = ''; }, 2500);
+      });
+
+      /* Inquiry form submission */
+      var inquiryForm = document.getElementById('custom-inquiry-form');
+      if (inquiryForm) {
+        inquiryForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          if (typeof validateForm === 'function' && !validateForm(this)) return;
+          var data = new FormData(this);
+          var name = data.get('name') || '';
+          var email = data.get('email') || '';
+          var whatsapp = data.get('whatsapp') || '';
+          var palette = data.get('palette') || 'Pastel Pink & Sage';
+          var concept = data.get('concept') || '';
+          if (!name || !email || !whatsapp || !concept) return;
+
+          var msg = 'Hello *Oouniverse*! \uD83E\uDDF6 I would like to inquire about a Custom Crochet Creation.\n\u2022 *Name*: ' + name + '\n\u2022 *Email*: ' + email + '\n\u2022 *Palette Selection*: ' + palette + '\n\u2022 *My Idea*: ' + concept + '\n\u2022 *Requested Timeline*: 7 - 14 Days\nPlease get back to me! \u2728';
+
+          var btn = document.getElementById('inquiry-submit-btn');
+          var btnText = document.getElementById('inquiry-btn-text');
+          btn.disabled = true;
+          btnText.textContent = 'Assembling your request details...';
+
+          var redirectMsg = document.getElementById('inquiry-redirect-msg');
+          redirectMsg.classList.remove('hidden');
+          redirectMsg.style.display = 'flex';
+
+          setTimeout(function() {
+            var phone = whatsapp.replace(/\D/g, '');
+            window.open('https://wa.me/' + (phone || '919876543210') + '?text=' + encodeURIComponent(msg), '_blank');
+          }, 1500);
+        });
+      }
+
+      updateUI();
+    });
+    </script>
+
+    <script src="js/utils.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/forms.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#F4E9E1] border-t border-[#70411B]/15 pt-20 pb-12 relative overflow-hidden" id="footer-section">
+      <div class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)] [background-size:16px_16px]"></div>
+      <div class="absolute top-0 left-0 right-0 h-4 flex items-center justify-between pointer-events-none">
+        <svg class="w-full h-full" viewBox="0 0 1200 16" preserveAspectRatio="none">
+          <path d="M 0,8 Q 150,0 300,8 T 600,8 T 900,8 T 1200,8" fill="none" stroke="#9A5B2A" stroke-width="2.5" stroke-dasharray="6 6"></path>
+        </svg>
+      </div>
+      <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div class="md:col-span-4 flex flex-col items-start text-left">
+          <div class="flex items-center gap-2 mb-4"><span class="text-2xl">🧶</span><span class="font-serif text-2xl font-bold tracking-wide text-[#70411B]">ऊनीverse</span></div>
+          <p class="text-xs text-[#70411B]/85 leading-relaxed max-w-sm mb-6">Handcrafting premium cozy crochet plushies, accessories, home decor accents, and vintage shoulder bags with unbleached organic Coimbatore cotton and premium Himalayan merino wool blends. "Don't Yawn, Just Yarn."</p>
+          <div class="flex gap-4">
+            <a href="https://instagram.com/oouni_verse/" target="_blank" rel="noreferrer" class="p-2.5 rounded-full bg-white text-[#70411B] hover:bg-[#9A5B2A] hover:text-white transition-all shadow-sm" title="Instagram Page">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="p-2.5 rounded-full bg-white text-[#70411B] hover:bg-[#A9C1A5] hover:text-white transition-all shadow-sm" title="WhatsApp Chat">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="md:col-span-3 flex flex-col items-start text-left">
+          <h4 class="font-serif text-sm font-bold text-[#70411B] uppercase tracking-widest mb-5">Loom Navigation</h4>
+          <div class="flex flex-col gap-3.5 text-xs text-[#70411B]/80 font-medium">
+            <a href="index.html" class="hover:text-[#9A5B2A] text-left cursor-pointer transition-colors">🏡 Cozy Home</a>
+            <a href="shop.html" class="hover:text-[#9A5B2A] text-left cursor-pointer transition-colors">🛍️ Shop Catalog</a>
+            <a href="custom.html" class="hover:text-[#9A5B2A] text-left cursor-pointer transition-colors">🎨 Custom Orders</a>
+            <a href="gallery.html" class="hover:text-[#9A5B2A] text-left cursor-pointer transition-colors">📱 Pinterest Gallery</a>
+            <a href="about.html" class="hover:text-[#9A5B2A] text-left cursor-pointer transition-colors">📖 Our Story</a>
+            <a href="contact.html" class="hover:text-[#9A5B2A] text-left cursor-pointer transition-colors">📞 Contact Us</a>
+          </div>
+        </div>
+        <div class="md:col-span-2 flex flex-col items-start text-left">
+          <h4 class="font-serif text-sm font-bold text-[#70411B] uppercase tracking-widest mb-5">The Studio</h4>
+          <div class="flex flex-col gap-4 text-xs text-[#70411B]/80 font-medium">
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-[#DFA8B4] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Haldwani, Uttarakhand, India (DM @oouni_verse)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#DFA8B4] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>hello@oouniverse.in</span>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-3 flex flex-col items-start text-left">
+          <h4 class="font-serif text-sm font-bold text-[#70411B] uppercase tracking-widest mb-4">Join the Club</h4>
+          <p class="text-[11px] text-[#70411B]/75 leading-relaxed mb-4">Receive exclusive early access to restocks, limited pattern drops, and vintage design stories. No spam, only cozy.</p>
+          <form id="newsletter-form" class="relative w-full flex items-center" novalidate>
+            <input type="email" required placeholder="Your warm email..." aria-label="Email address for newsletter" class="w-full bg-white border-2 border-[#70411B]/15 focus:border-[#70411B] outline-none rounded-xl px-4 py-3 text-xs text-[#70411B] pr-12 font-medium" />
+            <button type="submit" class="absolute right-1.5 p-2 bg-[#70411B] hover:bg-[#9A5B2A] text-white rounded-lg transition-colors cursor-pointer" title="Subscribe">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </form>
+          <div id="newsletter-success" class="hidden mt-3 text-[10px] font-semibold text-[#70411B] bg-white border border-[#A9C1A5] p-2 rounded-lg flex items-center gap-1">
+            <svg class="w-3.5 h-3.5 text-[#A9C1A5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
+            <span>Subscribed! Check your inbox for cozy warmth.</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-6 right-8 opacity-25 hover:opacity-50 transition-opacity hidden sm:block"><div class="text-4xl select-none cursor-pointer">🧶</div></div>
+      <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-[#70411B]/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#70411B]/60 font-semibold tracking-wider uppercase">
+        <span>© 2026 Oouniverse Studio. All stitch rights reserved.</span>
+        <span class="flex items-center gap-1 mt-3 sm:mt-0">Handcrafted with <svg class="w-3 h-3 text-[#DFA8B4]" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg> by master knitters</span>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+</div>
+</body>
+</html>

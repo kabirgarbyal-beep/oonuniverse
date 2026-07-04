@@ -1,0 +1,11 @@
+# Cloudflare Pages — clean URLs for multi-page static site
+/            /index.html       200
+/shop        /shop.html        200
+/product     /product.html     200
+/custom      /custom.html      200
+/gallery     /gallery.html     200
+/about       /about.html       200
+/contact     /contact.html     200
+
+# 404 fallback
+* /404.html 404

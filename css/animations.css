@@ -1,0 +1,373 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS — Vanilla JS replacements for Framer Motion / React Spring
+   All timings, easings, and spring configs match React source exactly.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Custom Easing Curves (from React source) ──────────────────────────── */
+
+:root {
+  /* Sharp ease-in-out: Loader exit, Navbar entrance, Mobile menu */
+  --ease-sharp: cubic-bezier(0.76, 0, 0.24, 1);
+  /* Ease-out quad variant: Hero title word stagger */
+  --ease-stagger: cubic-bezier(0.215, 0.61, 0.355, 1);
+  /* Deceleration curve: FAQ accordion, product image hover */
+  --ease-decel: cubic-bezier(0.25, 1, 0.5, 1);
+  /* Spring-like decel for drawers */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   1. PRELOADER ANIMATIONS (Loader.tsx)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Loader exit: opacity 0, y -20, duration 0.8s, ease [0.76, 0, 0.24, 1] */
+@keyframes loader-exit {
+  0%   { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Needle 1: rotate [15, -15, 15], y [-12, -8, -12], 2.5s ease-in-out infinite */
+@keyframes needle-swing {
+  0%   { transform: rotate(15deg) translateY(-12px); }
+  50%  { transform: rotate(-15deg) translateY(-8px); }
+  100% { transform: rotate(15deg) translateY(-12px); }
+}
+
+/* Needle 2: rotate [30, 60, 30], y [12, 18, 12], 2.5s ease-in-out infinite, delay 0.2s */
+@keyframes needle-swing-2 {
+  0%   { transform: rotate(30deg) translateY(12px); }
+  50%  { transform: rotate(60deg) translateY(18px); }
+  100% { transform: rotate(30deg) translateY(12px); }
+}
+
+/* Yarn ball roll: x [-120, 120, -120], rotate [-360, 360, -360], 6s ease-in-out infinite */
+@keyframes yarn-ball-roll {
+  0%   { transform: translateX(-120px) rotate(-360deg); }
+  50%  { transform: translateX(120px) rotate(360deg); }
+  100% { transform: translateX(-120px) rotate(-360deg); }
+}
+
+/* SVG Thread draw: strokeDashoffset [300, 0, 300], 6s ease-in-out infinite */
+@keyframes thread-loop {
+  0%   { stroke-dashoffset: 300; }
+  50%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 300; }
+}
+
+/* Brand title entrance: opacity [0→1], y [15→0], delay 0.2s, duration 0.6s */
+@keyframes brand-entrance {
+  0%   { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. HERO SECTION ANIMATIONS (Hero.tsx)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Floating blob 1: scale [1, 1.15, 1], rotate [0, 90, 0], 12s ease-in-out infinite */
+@keyframes blob-anim-1 {
+  0%   { transform: scale(1) rotate(0deg); }
+  50%  { transform: scale(1.15) rotate(90deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Floating blob 2: scale [1.1, 0.9, 1.1], rotate [180, 0, 180], 15s ease-in-out infinite */
+@keyframes blob-anim-2 {
+  0%   { transform: scale(1.1) rotate(180deg); }
+  50%  { transform: scale(0.9) rotate(0deg); }
+  100% { transform: scale(1.1) rotate(180deg); }
+}
+
+/* Particle float: y [-12, 12, -12], rotate [0, 360], opacity [0.3, 0.6, 0.3], ease-in-out infinite */
+@keyframes particle-float {
+  0%   { transform: translateY(-12px) rotate(0deg); opacity: 0.3; }
+  50%  { transform: translateY(12px) rotate(180deg); opacity: 0.6; }
+  100% { transform: translateY(-12px) rotate(360deg); opacity: 0.3; }
+}
+
+/* Hero SVG thread: strokeDashoffset [0, -40], 8s linear infinite */
+@keyframes thread-dash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -40; }
+}
+
+/* Hero needle spin 1: rotate [-30, -40, -30], 3s ease-in-out infinite */
+@keyframes needle-spin-1-hero {
+  0%, 100% { transform: rotate(-30deg); }
+  50% { transform: rotate(-40deg); }
+}
+
+/* Hero needle spin 2: rotate [40, 30, 40], y [0, 4, 0], 3s ease-in-out infinite, delay 0.5s */
+@keyframes needle-spin-2-hero {
+  0%, 100% { transform: rotate(40deg) translateY(0); }
+  50% { transform: rotate(30deg) translateY(4px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. CART/WISHLIST ANIMATIONS (CartDrawer.tsx)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Empty cart emoji bounce: y [-5, 5, -5], 3s ease-in-out infinite */
+@keyframes empty-float {
+  0%   { transform: translateY(-5px); }
+  50%  { transform: translateY(5px); }
+  100% { transform: translateY(-5px); }
+}
+
+/* Cart badge pop: scale [0, 1.2, 1], badge-pop */
+@keyframes badge-pop {
+  0%   { transform: scale(0); }
+  60%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Cart button bump: scale [1, 1.15, 0.95, 1.05, 1], 0.5s */
+@keyframes cart-bump {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.15); }
+  50%  { transform: scale(0.95); }
+  75%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Cart item stagger entrance */
+@keyframes cart-item-enter {
+  0%   { opacity: 0; transform: translateX(24px) scale(0.96); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* Cart header entrance */
+@keyframes cart-header-enter {
+  0%   { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Cart footer slide up */
+@keyframes cart-footer-enter {
+  0%   { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Cart empty state float in */
+@keyframes cart-empty-enter {
+  0%   { opacity: 0; transform: scale(0.9) translateY(12px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Success checkmark draw */
+@keyframes success-check-draw {
+  0%   { stroke-dashoffset: 40; opacity: 0; }
+  40%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+/* Success confetti pop */
+@keyframes success-pop {
+  0%   { transform: scale(0); }
+  60%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.cart-item-animate {
+  animation: cart-item-enter 0.4s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.cart-header-animate {
+  animation: cart-header-enter 0.35s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.cart-footer-animate {
+  animation: cart-footer-enter 0.4s cubic-bezier(0.32, 0.72, 0, 1) 0.15s both;
+}
+
+.cart-empty-animate {
+  animation: cart-empty-enter 0.5s cubic-bezier(0.32, 0.72, 0, 1) 0.1s both;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   4. FOOTER ANIMATIONS (Footer.tsx)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Footer SVG thread: strokeDashoffset [0, -30], 6s linear infinite */
+@keyframes footer-thread-scroll {
+  0%   { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -30; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Footer yarn ball rotate: 360deg, 15s linear infinite */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   5. GENERIC UTILITIES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: scale(0.9) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   7. SCROLL-TRIGGERED ENTRANCE (AOS — IntersectionObserver)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-aos] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease-decel), transform 0.6s var(--ease-decel);
+}
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos-delay="100"] { transition-delay: 100ms; }
+[data-aos-delay="200"] { transition-delay: 200ms; }
+[data-aos-delay="300"] { transition-delay: 300ms; }
+[data-aos-delay="400"] { transition-delay: 400ms; }
+[data-aos-delay="500"] { transition-delay: 500ms; }
+[data-aos-delay="600"] { transition-delay: 600ms; }
+[data-aos-delay="700"] { transition-delay: 700ms; }
+[data-aos-delay="800"] { transition-delay: 800ms; }
+[data-aos-delay="900"] { transition-delay: 900ms; }
+[data-aos-delay="1000"] { transition-delay: 1000ms; }
+[data-aos-delay="1100"] { transition-delay: 1100ms; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   8. APPLICATION CLASSES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-yarn-roll {
+  animation: yarn-ball-roll 6s var(--ease-sharp) infinite;
+}
+
+.animate-needle-1 {
+  animation: needle-swing 2.5s ease-in-out infinite;
+}
+
+.animate-needle-2 {
+  animation: needle-swing-2 2.5s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.animate-needle-1-hero {
+  animation: needle-spin-1-hero 3s ease-in-out infinite;
+}
+
+.animate-needle-2-hero {
+  animation: needle-spin-2-hero 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-empty-float {
+  animation: empty-float 3s ease-in-out infinite;
+}
+
+.animate-thread-dash {
+  animation: thread-dash 8s linear infinite;
+}
+
+.animate-footer-thread {
+  animation: footer-thread-scroll 6s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+.thread-path {
+  stroke-dasharray: 300;
+  animation: thread-loop 6s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   9. PAGE TRANSITIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#root {
+  opacity: 1;
+  transition: opacity 0.45s var(--ease-sharp), transform 0.45s var(--ease-sharp);
+}
+
+#root.page-exit {
+  opacity: 0;
+  transform: translateY(-12px) scale(0.98);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   9. TIMELINE ZIGZAG STITCH ANIMATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.timeline-container {
+  position: relative;
+}
+
+.timeline-zigzag {
+  z-index: 1;
+}
+
+.stitch-line {
+  transition: stroke-dashoffset 2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.stitch-line.animated {
+  stroke-dashoffset: 0;
+}
+
+.stitch-dot {
+  transition: opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+
+.stitch-dot.visible {
+  opacity: 0.8;
+}
+
+.timeline-marker {
+  border-width: 3px;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
+}
+
+.timeline-marker.pulse {
+  animation: marker-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes marker-pulse {
+  0%   { transform: scale(0.7); box-shadow: 0 0 0 0 rgba(232, 121, 168, 0.4); }
+  50%  { transform: scale(1.15); box-shadow: 0 0 0 12px rgba(232, 121, 168, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232, 121, 168, 0); }
+}
+
+.timeline-card {
+  border-radius: 4px;
+}
+
+.timeline-card.visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}

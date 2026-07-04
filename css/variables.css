@@ -1,0 +1,119 @@
+:root {
+  /*  Brand Colors  */
+  --color-cream: #FFF7F1;
+  --color-cream-rgb: 255, 247, 241;
+  --color-brown: #70411B;
+  --color-brown-rgb: 112, 65, 27;
+  --color-tan: #9A5B2A;
+  --color-tan-rgb: 154, 91, 42;
+  --color-rose: #DFA8B4;
+  --color-rose-rgb: 223, 168, 180;
+  --color-beige: #F4E9E1;
+  --color-beige-rgb: 244, 233, 225;
+  --color-rose-light: #EAAFB9;
+  --color-rose-light-rgb: 234, 175, 185;
+  --color-sage: #A9C1A5;
+  --color-sage-rgb: 169, 193, 165;
+  --color-pink-light: #F7D8DE;
+  --color-pink-light-rgb: 247, 216, 222;
+
+  /*  Functional Colors  */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-amber-100: #FEF3C7;
+  --color-amber-600: #D97706;
+  --color-amber-700: #B45309;
+  --color-amber-800: #92400E;
+  --color-red-400: #F87171;
+  --color-red-500: #EF4444;
+  --color-emerald-700: #047857;
+  --color-indigo-50: #EEF2FF;
+  --color-indigo-800: #3730A3;
+
+  /*  Typography  */
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "DM Sans", sans-serif;
+  --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+
+  /*  Spacing Scale  */
+  --space-0: 0;
+  --space-0\.5: 2px;
+  --space-1: 4px;
+  --space-1\.5: 6px;
+  --space-2: 8px;
+  --space-2\.5: 10px;
+  --space-3: 12px;
+  --space-3\.5: 14px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 44px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-18: 72px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-28: 112px;
+  --space-32: 128px;
+  --space-40: 160px;
+  --space-44: 176px;
+  --space-48: 192px;
+  --space-56: 224px;
+  --space-64: 256px;
+  --space-72: 288px;
+  --space-80: 320px;
+  --space-96: 384px;
+
+  /*  Border Radius  */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+  --radius-full: 9999px;
+
+  /*  Shadows  */
+  --shadow-sm: 0 1px 2px rgba(112, 65, 27, 0.06);
+  --shadow-md: 0 4px 12px rgba(112, 65, 27, 0.08);
+  --shadow-lg: 0 8px 30px rgba(112, 65, 27, 0.1);
+  --shadow-xl: 0 12px 40px rgba(112, 65, 27, 0.14);
+  --shadow-2xl: 0 20px 60px rgba(112, 65, 27, 0.18);
+  --shadow-inner: inset 0 2px 4px rgba(112, 65, 27, 0.04);
+
+  /*  Z-Index Scale  */
+  --z-10: 10;
+  --z-20: 20;
+  --z-25: 25;
+  --z-30: 30;
+  --z-35: 35;
+  --z-40: 40;
+  --z-50: 50;
+  --z-9999: 9999;
+
+  /*  Transition Tokens  */
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-400: 400ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-800: 800ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /*  Backdrop Blur  */
+  --blur-sm: 4px;
+  --blur-md: 8px;
+  --blur-lg: 12px;
+  --blur-xl: 24px;
+  --blur-3xl: 64px;
+}
