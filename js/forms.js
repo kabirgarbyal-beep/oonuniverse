@@ -124,10 +124,6 @@ function initContactForm() {
     const msg = formatContactMessage(name, email, phone, subject, message)
     sendToWhatsapp(msg)
 
-    /* Backend-ready: POST to API endpoint */
-    const payload = { name, email, phone, subject, message, source: 'contact', timestamp: new Date().toISOString() }
-    fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(err => console.warn('API contact failed:', err))
-
     clearForm(form)
 
     /* Show inline success message matching React */
@@ -164,9 +160,6 @@ function initNewsletterForm() {
       store.set('newsletter', subs)
     }
 
-    /* Backend-ready */
-    fetch('/api/newsletter', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'footer', timestamp: new Date().toISOString() }) }).catch(err => console.warn('API newsletter failed:', err))
-
     input.value = ''
     showToast('Subscribed! Welcome to the ऊनीverse.')
   })
@@ -187,9 +180,6 @@ function initCustomOrderForm() {
 
     const msg = formatCustomOrderMessage(name, message, design)
     sendToWhatsapp(msg)
-
-    /* Backend-ready */
-    fetch('/api/custom-order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, message, design, source: 'custom', timestamp: new Date().toISOString() }) }).catch(err => console.warn('API custom-order failed:', err))
 
     clearForm(form)
     showToast('Inquiry sent! We\'ll get back within 24h.')
