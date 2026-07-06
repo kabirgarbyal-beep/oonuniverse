@@ -501,6 +501,8 @@ input, textarea, select {
 .bg-\[#A9C1A5\] { background-color: var(--color-sage); }
 .bg-\[#A9C1A5\]\/10 { background-color: rgba(169, 193, 165, 0.1); }
 .bg-\[#A9C1A5\]\/20 { background-color: rgba(169, 193, 165, 0.2); }
+.bg-\[#C2185B\] { background-color: var(--color-pink-dark); }
+.bg-\[#AD1457\] { background-color: var(--color-pink-dark-hover); }
 .bg-\[#A9C1A5\]\/25 { background-color: rgba(169, 193, 165, 0.25); }
 .bg-\[#A9C1A5\]\/30 { background-color: rgba(169, 193, 165, 0.3); }
 .bg-\[#F7D8DE\] { background-color: var(--color-pink-light); }
@@ -880,6 +882,7 @@ input, textarea, select {
 .hover\:bg-\[#F4E9E1\]\/30:hover { background-color: rgba(244, 233, 225, 0.3); }
 .hover\:bg-\[#F4E9E1\]\/40:hover { background-color: rgba(244, 233, 225, 0.4); }
 .hover\:bg-\[#F4E9E1\]\/80:hover { background-color: rgba(244, 233, 225, 0.8); }
+.hover\:bg-\[#AD1457\]:hover { background-color: var(--color-pink-dark-hover); }
 .hover\:bg-\[#A9C1A5\]\/10:hover { background-color: rgba(169, 193, 165, 0.1); }
 .hover\:bg-white:hover { background-color: var(--color-white); }
 

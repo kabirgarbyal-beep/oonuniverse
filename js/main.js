@@ -185,7 +185,7 @@ function initProductModal() {
                   <span class="font-mono font-bold w-8 text-center text-[#70411B]" id="modal-qty">1</span>
                   <button class="text-lg font-bold text-[#70411B] hover:text-[#9A5B2A] w-6 text-center cursor-pointer modal-qty-btn" data-delta="1">+</button>
                 </div>
-                <button class="flex-grow py-4 bg-[#DFA8B4] hover:bg-[#c9899f] text-[#4A1942] font-bold tracking-wide rounded-xl shadow-lg hover:shadow-xl hover:shadow-[#DFA8B4]/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer add-to-cart-modal" data-product-id="${productId}" id="modal-add-btn">
+                <button style="background: linear-gradient(to right, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.3); color: #fff;" onmouseover="this.style.background='linear-gradient(to right, #c9899f, #DFA8B4)'; this.style.boxShadow='0 8px 25px rgba(223,168,180,0.5)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='linear-gradient(to right, #DFA8B4, #c9899f)'; this.style.boxShadow='0 4px 15px rgba(223,168,180,0.3)'; this.style.transform='translateY(0)'" class="flex-grow py-4 font-bold tracking-wide rounded-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer add-to-cart-modal" data-product-id="${productId}" id="modal-add-btn">
                   <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                   <span>Add to Cart — ${formatPrice(p.price)}</span>
                 </button>
@@ -326,84 +326,188 @@ function initGalleryLightbox() {
 /* ── LOOM STUDIO CUSTOMIZER ────────────────────────────────────────────── */
 
 function initLoomStudio() {
-  const preview = $('#live-preview')
-  if (!preview) return
+  const playground = $('#playground-render')
+  if (!playground) return
 
-  window.customBase = 'coaster'
-  window.customColor = '#DFA8B4'
-  window.customAccessories = []
+  window.customBase = 'Coaster'
+  window.customColor = '#F7D8DE'
+  window.customColorName = 'Peach Sorbet'
+  window.customAccessory = 'Flower Crown'
+  window.customLabel = ''
 
-  const baseIcons = { coaster: '🧩', octopus: '🐙', 'hair-bow': '🎀' }
-  const baseNames = { coaster: 'Coaster', octopus: 'Octopus Plushie', 'hair-bow': 'Hair Bow' }
-  const colorNames = { '#DFA8B4': 'Rose', '#A9C1A5': 'Sage', '#70411B': 'Brown', '#9A5B2A': 'Tan', '#FFF7F1': 'Cream' }
+  const basePrices = { 'Coaster': 450, 'Octo Plushie': 750, 'Hair Bow': 350 }
+
+  function setAllColors(hex) {
+    /* Coaster */
+    const coaster = $('#render-coaster')
+    if (coaster) coaster.style.backgroundColor = hex
+    /* Octopus head + tentacles */
+    const octoHead = $('#octo-head')
+    if (octoHead) octoHead.style.backgroundColor = hex
+    $$('.octo-tentacle').forEach(t => t.style.backgroundColor = hex)
+    /* Hair bow parts */
+    const bowL = $('#bow-left'), bowR = $('#bow-right'), bowC = $('#bow-center')
+    const bowTL = $('#bow-tail-l'), bowTR = $('#bow-tail-r')
+    if (bowL) bowL.style.backgroundColor = hex
+    if (bowR) bowR.style.backgroundColor = hex
+    if (bowC) bowC.style.backgroundColor = hex
+    if (bowTL) bowTL.style.backgroundColor = hex
+    if (bowTR) bowTR.style.backgroundColor = hex
+  }
 
   function updatePreview() {
-    const iconEl = $('#preview-base-icon')
-    const dotEl = $('#preview-color-dot')
-    const labelEl = $('#preview-label')
-    const colorNameEl = $('#preview-color-name')
-    const colorLabel = $('#selected-color-label')
-    const bowEl = $('#preview-bow')
-    const flowerEl = $('#preview-flower')
-    const emptyMsg = $('#preview-empty-msg')
-    const designCode = $('#design-code')
-    const countEl = $('#preview-count')
+    const base = window.customBase
+    const hex = window.customColor
+    const acc = window.customAccessory
 
-    if (iconEl) iconEl.textContent = baseIcons[window.customBase] || '🧩'
-    if (labelEl) labelEl.textContent = baseNames[window.customBase] || 'Custom'
-    if (dotEl) dotEl.style.backgroundColor = window.customColor
-    if (colorNameEl) colorNameEl.textContent = colorNames[window.customColor] || window.customColor
-    if (colorLabel) colorLabel.textContent = colorNames[window.customColor] || 'None'
-    if (emptyMsg) emptyMsg.style.display = 'none'
+    /* Show correct render, hide others */
+    const coasterEl = $('#render-coaster')
+    const octoEl = $('#render-octopus')
+    const bowEl = $('#render-hairbow')
+    if (coasterEl) coasterEl.classList.toggle('hidden', base !== 'Coaster')
+    if (octoEl) octoEl.classList.toggle('hidden', base !== 'Octo Plushie')
+    if (bowEl) bowEl.classList.toggle('hidden', base !== 'Hair Bow')
 
-    if (bowEl) bowEl.classList.toggle('hidden', !window.customAccessories.includes('bow'))
-    if (flowerEl) flowerEl.classList.toggle('hidden', !window.customAccessories.includes('flower'))
+    /* Apply color to all visible elements */
+    setAllColors(hex)
 
-    const count = (window.customBase ? 1 : 0) + (window.customColor ? 1 : 0) + window.customAccessories.length
-    if (countEl) countEl.textContent = `${count} option${count !== 1 ? 's' : ''} chosen`
-    if (designCode) designCode.textContent = `${window.customBase}-${window.customColor.replace('#', '')}-${window.customAccessories.join('') || 'none'}`
+    /* Coaster accessory */
+    const coasterAcc = $('#coaster-accessory')
+    if (coasterAcc) {
+      coasterAcc.classList.toggle('hidden', acc === 'None')
+      if (acc === 'Flower Crown') coasterAcc.innerHTML = '&#x1F338;'
+      else if (acc === 'Cosy Scarf') coasterAcc.innerHTML = '&#x1F9E3;'
+      else if (acc === 'Mini Satin Bow') coasterAcc.innerHTML = '&#x1F380;'
+    }
+
+    /* Octopus accessory */
+    const octoAcc = $('#octo-accessory')
+    if (octoAcc) {
+      octoAcc.classList.toggle('hidden', acc === 'None')
+      if (acc === 'Flower Crown') octoAcc.innerHTML = '&#x1F338;'
+      else if (acc === 'Cosy Scarf') octoAcc.innerHTML = '&#x1F9E3;'
+      else if (acc === 'Mini Satin Bow') octoAcc.innerHTML = '&#x1F380;'
+    }
+
+    /* Hair bow accessory */
+    const bowAcc = $('#bow-accessory')
+    if (bowAcc) {
+      bowAcc.classList.toggle('hidden', acc === 'None')
+      if (acc === 'Flower Crown') bowAcc.innerHTML = '&#x1F338;'
+      else if (acc === 'Cosy Scarf') bowAcc.innerHTML = '&#x1F9E3;'
+      else if (acc === 'Mini Satin Bow') bowAcc.innerHTML = '&#x1F380;'
+    }
+
+    /* Label on coaster */
+    const coasterLabel = $('#coaster-label')
+    if (coasterLabel && base === 'Coaster') {
+      coasterLabel.textContent = window.customLabel || '\u2615\uFE0F'
+    }
+
+    /* Label on octopus */
+    const octoLabel = $('#octo-label')
+    const octoLabelText = $('#octo-label-text')
+    if (octoLabel && base === 'Octo Plushie') {
+      if (window.customLabel) {
+        octoLabel.classList.remove('hidden')
+        if (octoLabelText) octoLabelText.textContent = window.customLabel
+      } else {
+        octoLabel.classList.add('hidden')
+      }
+    }
+
+    /* Label on hair bow */
+    const bowLabel = $('#bow-label')
+    const bowLabelText = $('#bow-label-text')
+    if (bowLabel && base === 'Hair Bow') {
+      if (window.customLabel) {
+        bowLabel.classList.remove('hidden')
+        if (bowLabelText) bowLabelText.textContent = window.customLabel
+      } else {
+        bowLabel.classList.add('hidden')
+      }
+    }
+
+    /* Update price */
+    let price = basePrices[base] || 450
+    if (acc && acc !== 'None') price += 100
+    if (window.customLabel) price += 120
+    const priceEl = $('#price-display')
+    if (priceEl) priceEl.textContent = '\u20B9' + price
   }
 
   /* Base selection */
-  delegate(document, '.base-option', 'click', (_, btn) => {
+  delegate(document, '.base-btn', 'click', (_, btn) => {
     window.customBase = btn.dataset.base
-    $$('.base-option').forEach(b => {
-      b.style.borderColor = b.dataset.base === window.customBase ? '#70411B' : 'rgba(112,65,27,0.1)'
-      b.style.backgroundColor = b.dataset.base === window.customBase ? 'rgba(112,65,27,0.05)' : ''
+    $$('.base-btn').forEach(b => {
+      const active = b.dataset.base === window.customBase
+      b.style.borderColor = active ? '#70411B' : 'rgba(112,65,27,0.1)'
+      b.style.backgroundColor = active ? 'rgba(112,65,27,0.05)' : ''
+      b.style.color = active ? '#70411B' : 'rgba(112,65,27,0.6)'
     })
     updatePreview()
   })
 
   /* Color selection */
-  delegate(document, '.color-swatch[data-hex]', 'click', (_, btn) => {
+  delegate(document, '.color-btn', 'click', (_, btn) => {
     window.customColor = btn.dataset.hex
-    $$('.color-swatch[data-hex]').forEach(b => {
-      b.querySelector('div')?.style.setProperty('border-color', b.dataset.hex === window.customColor ? '#70411B' : 'rgba(112,65,27,0.1)')
+    window.customColorName = btn.dataset.color
+    $$('.color-btn').forEach(b => {
+      const active = b.dataset.hex === window.customColor
+      b.style.borderColor = active ? '#70411B' : 'transparent'
+      const check = b.querySelector('svg')
+      if (check) check.style.display = active ? '' : 'none'
+    })
+    const colorNameDisplay = $('#color-name-display')
+    if (colorNameDisplay) colorNameDisplay.textContent = window.customColorName
+    updatePreview()
+  })
+
+  /* Accessory selection */
+  delegate(document, '.acc-btn', 'click', (_, btn) => {
+    window.customAccessory = btn.dataset.accessory
+    $$('.acc-btn').forEach(b => {
+      const active = b.dataset.accessory === window.customAccessory
+      b.style.borderColor = active ? '#70411B' : 'rgba(112,65,27,0.1)'
+      b.style.backgroundColor = active ? 'rgba(112,65,27,0.05)' : ''
+      b.style.color = active ? '#70411B' : 'rgba(112,65,27,0.5)'
     })
     updatePreview()
   })
 
-  /* Accessory toggle */
-  delegate(document, '.accessory-toggle', 'change', (_, label) => {
-    const cb = label.querySelector('input[type="checkbox"]')
-    if (!cb) return
-    const acc = label.dataset.accessory
-    const idx = window.customAccessories.indexOf(acc)
-    if (cb.checked && idx === -1) window.customAccessories.push(acc)
-    if (!cb.checked && idx > -1) window.customAccessories.splice(idx, 1)
-    updatePreview()
+  /* Text label input */
+  const labelInput = $('#text-label-input')
+  if (labelInput) {
+    on(labelInput, 'input', function () {
+      window.customLabel = this.value.trim().toUpperCase()
+      updatePreview()
+    })
+  }
+
+  /* Initial highlight for base */
+  $$('.base-btn').forEach(b => {
+    const active = b.dataset.base === window.customBase
+    b.style.borderColor = active ? '#70411B' : 'rgba(112,65,27,0.1)'
+    b.style.backgroundColor = active ? 'rgba(112,65,27,0.05)' : ''
+    b.style.color = active ? '#70411B' : 'rgba(112,65,27,0.6)'
   })
 
-  /* Initial highlight */
-  const firstBase = $('.base-option')
-  if (firstBase) {
-    firstBase.style.borderColor = '#70411B'
-    firstBase.style.backgroundColor = 'rgba(112,65,27,0.05)'
-  }
-  const firstColor = $('.color-swatch[data-hex]')
-  if (firstColor) {
-    firstColor.querySelector('div')?.style.setProperty('border-color', '#70411B')
-  }
+  /* Initial highlight for color */
+  $$('.color-btn').forEach(b => {
+    const active = b.dataset.hex === window.customColor
+    b.style.borderColor = active ? '#70411B' : 'transparent'
+    const check = b.querySelector('svg')
+    if (check) check.style.display = active ? '' : 'none'
+  })
+
+  /* Initial highlight for accessory */
+  $$('.acc-btn').forEach(b => {
+    const active = b.dataset.accessory === window.customAccessory
+    b.style.borderColor = active ? '#70411B' : 'rgba(112,65,27,0.1)'
+    b.style.backgroundColor = active ? 'rgba(112,65,27,0.05)' : ''
+    b.style.color = active ? '#70411B' : 'rgba(112,65,27,0.5)'
+  })
+
   updatePreview()
 }
 

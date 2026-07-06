@@ -41,19 +41,19 @@
   }
   #cart-btn:hover, #wishlist-btn:hover {
     box-shadow: 0 0 10px rgba(223,168,180,0.5), 0 0 25px rgba(223,168,180,0.3), 0 0 50px rgba(223,168,180,0.15);
-    background-color: rgba(244,233,225,0.9);
+    background-color: rgba(247,216,222,0.3);
     transform: scale(1.1);
   }
 
   /* Badge notification pulse */
   @keyframes badge-pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.5); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.7); }
     50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(223,168,180,0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0); }
   }
   @keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 4px rgba(223,168,180,0.4); }
-    50% { box-shadow: 0 0 12px rgba(223,168,180,0.8), 0 0 20px rgba(223,168,180,0.4); }
+    0%, 100% { box-shadow: 0 0 6px rgba(223,168,180,0.6); }
+    50% { box-shadow: 0 0 15px rgba(223,168,180,0.9), 0 0 25px rgba(223,168,180,0.5); }
   }
   #cart-btn .absolute.-top-1, #wishlist-btn .absolute.-top-1 {
     animation: badge-glow 2s ease-in-out infinite;

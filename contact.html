@@ -45,19 +45,19 @@
   }
   #cart-btn:hover, #wishlist-btn:hover {
     box-shadow: 0 0 10px rgba(223,168,180,0.5), 0 0 25px rgba(223,168,180,0.3), 0 0 50px rgba(223,168,180,0.15);
-    background-color: rgba(244,233,225,0.9);
+    background-color: rgba(247,216,222,0.3);
     transform: scale(1.1);
   }
 
   /* Badge notification pulse */
   @keyframes badge-pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.5); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.7); }
     50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(223,168,180,0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0); }
   }
   @keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 4px rgba(223,168,180,0.4); }
-    50% { box-shadow: 0 0 12px rgba(223,168,180,0.8), 0 0 20px rgba(223,168,180,0.4); }
+    0%, 100% { box-shadow: 0 0 6px rgba(223,168,180,0.6); }
+    50% { box-shadow: 0 0 15px rgba(223,168,180,0.9), 0 0 25px rgba(223,168,180,0.5); }
   }
   #cart-btn .absolute.-top-1, #wishlist-btn .absolute.-top-1 {
     animation: badge-glow 2s ease-in-out infinite;
@@ -163,7 +163,7 @@
         <div class="flex items-center gap-3.5 md:gap-5">
           <button id="wishlist-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="View Wishlist"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
           </button>
-          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 2px 8px rgba(223,168,180,0.5); display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           </button>
           <a href="custom.html" class="hidden md:flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-[#FFF7F1] border border-[#70411B]/15 text-[#70411B] rounded-full hover:bg-[#9A5B2A]/20 transition-all duration-300 cursor-pointer">
             <svg class="w-3.5 h-3.5 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
@@ -226,82 +226,85 @@
             <div class="lg:col-span-5 flex flex-col gap-8">
               
               <!-- Quick Details Card -->
-              <div class="bg-white rounded-[32px] p-8 border border-[#70411B]/15 shadow-sm relative overflow-hidden">
-                <!-- Stitch border -->
-                <div class="absolute inset-2 border border-dashed border-[#70411B]/5 rounded-[24px] pointer-events-none"></div>
+              <div class="rounded-[32px] p-8 border border-[#DFA8B4]/20 shadow-xl relative overflow-hidden" style="background: linear-gradient(135deg, rgba(247,216,222,0.3) 0%, rgba(255,247,241,0.9) 50%, rgba(244,233,225,0.6) 100%);">
+                <!-- Decorative stitch texture -->
+                <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)]" style="background-size:16px 16px;"></div>
+                <div class="absolute inset-3 border border-dashed border-[#DFA8B4]/20 rounded-[24px] pointer-events-none"></div>
                 
-                <h3 class="font-serif text-2xl font-bold text-[#70411B] mb-6 tracking-wide flex items-center gap-2">
-                  <span>Studio Details</span>
-                  <span class="text-lg">&#x1F549;&#xFE0F;&#x1F9FF;</span>
-                </h3>
+                <div class="relative z-10">
+                  <h3 class="font-serif text-2xl font-bold text-[#70411B] mb-6 tracking-wide flex items-center gap-2">
+                    <span>Studio Details</span>
+                    <span class="text-lg">&#x1F549;&#xFE0F;&#x1F9FF;</span>
+                  </h3>
 
-                <div class="flex flex-col gap-6 font-sans text-[#70411B]/80 text-sm">
-                  
-                  <!-- Address -->
-                  <div class="flex items-start gap-4">
-                    <div class="w-9 h-9 rounded-xl bg-[#FFF7F1] border border-[#70411B]/10 flex items-center justify-center shrink-0">
-                      <svg class="w-4 h-4 text-[#9A5B2A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <div class="flex flex-col gap-6 font-sans text-[#70411B]/80 text-sm">
+                    
+                    <!-- Address -->
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 3px 10px rgba(223,168,180,0.35);">
+                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      </div>
+                      <div>
+                        <span class="block font-serif font-bold text-[#70411B] text-xs uppercase tracking-wide mb-1">Our Studio Location</span>
+                        <p class="leading-relaxed font-medium text-[#70411B]/75">
+                          The &#x090A;&#x0928;&#x0940;verse Studio,<br />
+                          Haldwani, Uttarakhand &#x2014; 263139
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <span class="block font-serif font-bold text-[#70411B] text-xs uppercase tracking-wide mb-1">Our Studio Location</span>
-                      <p class="leading-relaxed font-medium">
-                        The &#x090A;&#x0928;&#x0940;verse Studio,<br />
-                        Haldwani, Uttarakhand &#x2014; 263139
-                      </p>
+
+                    <!-- Shipping & Order Note -->
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 3px 10px rgba(223,168,180,0.35);">
+                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                      </div>
+                      <div>
+                        <span class="block font-serif font-bold text-[#70411B] text-xs uppercase tracking-wide mb-1">Crafting Time &amp; Policy</span>
+                        <p class="leading-relaxed text-xs text-[#70411B]/75">
+                          &#x2022; Order at least 15 days prior to avoid the rush &#x1F9F6;<br />
+                          &#x2022; Shipping &#x1F1EE;&#x1F1F3; | No return / COD |
+                        </p>
+                      </div>
                     </div>
+
+                    <!-- Instagram Bio Box -->
+                    <div class="p-4 rounded-2xl border border-[#DFA8B4]/15 text-xs" style="background: linear-gradient(135deg, rgba(247,216,222,0.25), rgba(255,247,241,0.5));">
+                      <span class="block font-serif font-bold text-[#DFA8B4] text-[10px] uppercase tracking-wider mb-2">Our Instagram Spirit &#x1F48C;</span>
+                      <div class="font-sans text-[#70411B]/80 space-y-1">
+                        <p>&#x1F549;&#xFE0F;&#x1F9FF;</p>
+                        <p>&#x1F4CD; Haldwani, Uttarakhand</p>
+                        <p>Crochet products &#x1F9F6;</p>
+                        <p>Order atleast 15 days prior to avoid the rush.</p>
+                        <p>Dm to order &#x1F48C;</p>
+                        <p>Shipping &#x1F1EE;&#x1F1F3; | No return / cod</p>
+                      </div>
+                    </div>
+
+                    <!-- Instagram Link -->
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 3px 10px rgba(223,168,180,0.35);">
+                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                      </div>
+                      <div>
+                        <span class="block font-serif font-bold text-[#70411B] text-xs uppercase tracking-wide mb-1">Follow Our Stitch Feed</span>
+                        <a 
+                          href="https://instagram.com/oouni_verse/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          class="leading-relaxed font-bold text-[#DFA8B4] hover:text-[#c9899f] transition-colors cursor-pointer inline-flex items-center gap-1"
+                        >
+                          @oouni_verse
+                        </a>
+                        <span class="text-[10px] text-[#70411B]/50 block mt-0.5">Where we post behind-the-scenes loop animations!</span>
+                      </div>
+                    </div>
+
                   </div>
-
-                  <!-- Shipping & Order Note -->
-                  <div class="flex items-start gap-4">
-                    <div class="w-9 h-9 rounded-xl bg-[#FFF7F1] border border-[#70411B]/10 flex items-center justify-center shrink-0">
-                      <svg class="w-4 h-4 text-[#9A5B2A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
-                    </div>
-                    <div>
-                      <span class="block font-serif font-bold text-[#70411B] text-xs uppercase tracking-wide mb-1">Crafting Time &amp; Policy</span>
-                      <p class="leading-relaxed text-xs">
-                        &#x2022; Order at least 15 days prior to avoid the rush &#x1F9F6;<br />
-                        &#x2022; Shipping &#x1F1EE;&#x1F1F3; | No return / COD |
-                      </p>
-                    </div>
-                  </div>
-
-                  <!-- Instagram Bio Box -->
-                  <div class="p-4 rounded-2xl bg-[#FFF7F1]/50 border border-[#70411B]/10 text-xs">
-                    <span class="block font-serif font-bold text-[#9A5B2A] text-[10px] uppercase tracking-wider mb-2">Our Instagram Spirit &#x1F48C;</span>
-                    <div class="font-sans text-[#70411B]/90 space-y-1">
-                      <p>&#x1F549;&#xFE0F;&#x1F9FF;</p>
-                      <p>&#x1F4CD; Haldwani, Uttarakhand</p>
-                      <p>Crochet products &#x1F9F6;</p>
-                      <p>Order atleast 15 days prior to avoid the rush.</p>
-                      <p>Dm to order &#x1F48C;</p>
-                      <p>Shipping &#x1F1EE;&#x1F1F3; | No return / cod</p>
-                    </div>
-                  </div>
-
-                  <!-- Instagram Link -->
-                  <div class="flex items-start gap-4">
-                    <div class="w-9 h-9 rounded-xl bg-[#FFF7F1] border border-[#70411B]/10 flex items-center justify-center shrink-0">
-                      <svg class="w-4 h-4 text-[#9A5B2A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    </div>
-                    <div>
-                      <span class="block font-serif font-bold text-[#70411B] text-xs uppercase tracking-wide mb-1">Follow Our Stitch Feed</span>
-                      <a 
-                        href="https://instagram.com/oouni_verse/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="leading-relaxed font-bold text-[#9A5B2A] hover:underline cursor-pointer inline-flex items-center gap-1"
-                      >
-                        @oouni_verse
-                      </a>
-                      <span class="text-[10px] text-[#70411B]/55 block mt-0.5">Where we post behind-the-scenes loop animations!</span>
-                    </div>
-                  </div>
-
                 </div>
               </div>
 
               <!-- Google Map Box -->
-              <div class="bg-white rounded-[32px] p-4 border border-[#70411B]/15 shadow-sm relative overflow-hidden h-[260px]">
+              <div class="rounded-[32px] p-4 border border-[#DFA8B4]/20 shadow-xl relative overflow-hidden h-[260px]" style="background: linear-gradient(135deg, rgba(247,216,222,0.2), rgba(255,247,241,0.8));">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27918.49014167123!2d79.508535!3d29.218264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a09ade140b5f13%3A0xbc4e7ff9ff0f44bd!2sHaldwani%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1783007120000!5m2!1sen!2sin" 
                   class="w-full h-full rounded-[24px] border-0"
@@ -316,101 +319,125 @@
 
             <!-- Right Column: Contact/Inquiry Form -->
             <div class="lg:col-span-7">
-              <div class="bg-white rounded-[32px] p-8 md:p-10 border border-[#70411B]/15 shadow-sm relative overflow-hidden">
-                <!-- Stitch border -->
-                <div class="absolute inset-2 border border-dashed border-[#70411B]/5 rounded-[24px] pointer-events-none"></div>
+              <div class="rounded-[32px] p-8 md:p-10 border border-[#DFA8B4]/20 shadow-xl relative overflow-hidden" style="background: linear-gradient(135deg, rgba(247,216,222,0.3) 0%, rgba(255,247,241,0.9) 50%, rgba(244,233,225,0.6) 100%);">
+                <!-- Decorative stitch texture -->
+                <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)]" style="background-size:16px 16px;"></div>
+                <div class="absolute inset-3 border border-dashed border-[#DFA8B4]/20 rounded-[24px] pointer-events-none"></div>
 
-                <h3 class="font-serif text-2xl font-bold text-[#70411B] mb-2 tracking-wide">
-                  Send a Cozy Message
-                </h3>
-                <p class="font-sans text-xs text-[#70411B]/60 mb-8">
-                  Your message will go straight to Aditi's workspace. We draft this beautifully so you can send it via WhatsApp for instant response!
-                </p>
+                <div class="relative z-10">
+                  <div class="flex items-start gap-3 mb-8">
+                    <div class="p-3 rounded-2xl shadow-lg shrink-0" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.4);">
+                      <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                    </div>
+                    <div>
+                      <h3 class="font-serif text-2xl font-bold text-[#70411B] mb-1 tracking-wide">
+                        Send a Cozy Message
+                      </h3>
+                      <p class="font-sans text-xs text-[#70411B]/60 leading-relaxed">
+                        Your message will go straight to Aditi's workspace. We draft this beautifully so you can send it via WhatsApp for instant response!
+                      </p>
+                    </div>
+                  </div>
 
-                <form id="contact-form" class="flex flex-col gap-5" novalidate>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <!-- Name field -->
+                  <form id="contact-form" class="flex flex-col gap-5 relative z-10" novalidate>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <!-- Name field -->
+                      <div class="flex flex-col gap-1.5">
+                        <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider flex items-center gap-1.5">
+                          <span class="w-1.5 h-1.5 rounded-full bg-[#DFA8B4]"></span>Your Name *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          name="name"
+                          data-rules="required,min:2"
+                          placeholder="e.g., Aaradhya Joshi"
+                          class="w-full bg-white/70 backdrop-blur-sm border-2 border-[#70411B]/10 focus:border-[#DFA8B4] focus:shadow-[0_0_0_4px_rgba(223,168,180,0.15)] rounded-2xl px-4 py-3.5 text-sm text-[#70411B] outline-none transition-all duration-300 placeholder-[#70411B]/30"
+                        />
+                      </div>
+
+                      <!-- Email field -->
+                      <div class="flex flex-col gap-1.5">
+                        <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider flex items-center gap-1.5">
+                          <span class="w-1.5 h-1.5 rounded-full bg-[#DFA8B4]"></span>Email Address *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          name="email"
+                          data-rules="required,email"
+                          placeholder="e.g., aaradhya@gmail.com"
+                          class="w-full bg-white/70 backdrop-blur-sm border-2 border-[#70411B]/10 focus:border-[#DFA8B4] focus:shadow-[0_0_0_4px_rgba(223,168,180,0.15)] rounded-2xl px-4 py-3.5 text-sm text-[#70411B] outline-none transition-all duration-300 placeholder-[#70411B]/30"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <!-- Phone field -->
+                      <div class="flex flex-col gap-1.5">
+                        <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider flex items-center gap-1.5">
+                          <span class="w-1.5 h-1.5 rounded-full bg-[#DFA8B4]"></span>WhatsApp Number
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          placeholder="e.g., +91 98765 43210"
+                          class="w-full bg-white/70 backdrop-blur-sm border-2 border-[#70411B]/10 focus:border-[#DFA8B4] focus:shadow-[0_0_0_4px_rgba(223,168,180,0.15)] rounded-2xl px-4 py-3.5 text-sm text-[#70411B] outline-none transition-all duration-300 placeholder-[#70411B]/30"
+                        />
+                      </div>
+
+                      <!-- Subject field -->
+                      <div class="flex flex-col gap-1.5">
+                        <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider flex items-center gap-1.5">
+                          <span class="w-1.5 h-1.5 rounded-full bg-[#DFA8B4]"></span>Subject
+                        </label>
+                        <select
+                          name="subject"
+                          class="w-full bg-white/70 backdrop-blur-sm border-2 border-[#70411B]/10 focus:border-[#DFA8B4] focus:shadow-[0_0_0_4px_rgba(223,168,180,0.15)] rounded-2xl px-4 py-3.5 text-sm text-[#70411B] outline-none transition-all duration-300 cursor-pointer appearance-none"
+                          style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2370411B' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 16px center;"
+                        >
+                          <option value="General Inquiry">General Inquiry</option>
+                          <option value="Custom Design Order">Custom Design Request</option>
+                          <option value="Shipping &amp; Delivery">Shipping &amp; Delivery</option>
+                          <option value="Artisan Collaboration">Artisan Collaboration</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- Message field -->
                     <div class="flex flex-col gap-1.5">
-                      <label class="font-serif text-[11px] font-bold text-[#70411B]/80 uppercase tracking-wider">Your Name *</label>
-                      <input
-                        type="text"
+                      <label class="text-[10px] font-bold text-[#70411B] uppercase tracking-wider flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#DFA8B4]"></span>Your Message *
+                      </label>
+                      <textarea
                         required
-                        name="name"
-                        data-rules="required,min:2"
-                        placeholder="e.g., Aaradhya Joshi"
-                        class="w-full border-2 border-[#70411B]/10 focus:border-[#70411B] bg-[#FFF7F1]/20 rounded-xl px-4 py-3 text-sm text-[#70411B] outline-none transition-all placeholder-[#70411B]/40"
-                      />
+                        name="message"
+                        data-rules="required,min:10"
+                        rows="4"
+                        placeholder="Tell us what you would love to hear about..."
+                        class="w-full bg-white/70 backdrop-blur-sm border-2 border-[#70411B]/10 focus:border-[#DFA8B4] focus:shadow-[0_0_0_4px_rgba(223,168,180,0.15)] rounded-2xl px-4 py-3.5 text-sm text-[#70411B] outline-none resize-none transition-all duration-300 placeholder-[#70411B]/30"
+                      ></textarea>
                     </div>
 
-                    <!-- Email field -->
-                    <div class="flex flex-col gap-1.5">
-                      <label class="font-serif text-[11px] font-bold text-[#70411B]/80 uppercase tracking-wider">Email Address *</label>
-                      <input
-                        type="email"
-                        required
-                        name="email"
-                        data-rules="required,email"
-                        placeholder="e.g., aaradhya@gmail.com"
-                        class="w-full border-2 border-[#70411B]/10 focus:border-[#70411B] bg-[#FFF7F1]/20 rounded-xl px-4 py-3 text-sm text-[#70411B] outline-none transition-all placeholder-[#70411B]/40"
-                      />
-                    </div>
-                  </div>
+                    <!-- Button -->
+                    <button
+                      type="submit"
+                      style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.4);"
+                      onmouseover="this.style.background='linear-gradient(135deg, #c9899f, #DFA8B4)'; this.style.boxShadow='0 8px 25px rgba(223,168,180,0.6)'; this.style.transform='translateY(-2px)'"
+                      onmouseout="this.style.background='linear-gradient(135deg, #DFA8B4, #c9899f)'; this.style.boxShadow='0 4px 15px rgba(223,168,180,0.4)'; this.style.transform='translateY(0)'"
+                      class="w-full py-4 text-white font-sans font-bold tracking-wide rounded-2xl flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 mt-2"
+                    >
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                      <span>Send via WhatsApp Support</span>
+                    </button>
 
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <!-- Phone field -->
-                    <div class="flex flex-col gap-1.5">
-                      <label class="font-serif text-[11px] font-bold text-[#70411B]/80 uppercase tracking-wider">WhatsApp Number</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="e.g., +91 98765 43210"
-                        class="w-full border-2 border-[#70411B]/10 focus:border-[#70411B] bg-[#FFF7F1]/20 rounded-xl px-4 py-3 text-sm text-[#70411B] outline-none transition-all placeholder-[#70411B]/40"
-                      />
+                    <div id="contact-success" class="hidden p-3.5 rounded-2xl bg-[#A9C1A5]/15 border border-[#A9C1A5]/30 text-[#70411B] text-xs font-semibold items-center gap-2 justify-center">
+                      <svg class="w-4 h-4 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                      <span>Your WhatsApp message layout has been created successfully!</span>
                     </div>
 
-                    <!-- Subject field -->
-                    <div class="flex flex-col gap-1.5">
-                      <label class="font-serif text-[11px] font-bold text-[#70411B]/80 uppercase tracking-wider">Subject</label>
-                      <select
-                        name="subject"
-                        class="w-full border-2 border-[#70411B]/10 focus:border-[#70411B] bg-[#FFF7F1]/20 rounded-xl px-4 py-3 text-sm text-[#70411B] outline-none transition-all cursor-pointer"
-                      >
-                        <option value="General Inquiry">General Inquiry</option>
-                        <option value="Custom Design Order">Custom Design Request</option>
-                        <option value="Shipping &amp; Delivery">Shipping &amp; Delivery</option>
-                        <option value="Artisan Collaboration">Artisan Collaboration</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <!-- Message field -->
-                  <div class="flex flex-col gap-1.5">
-                    <label class="font-serif text-[11px] font-bold text-[#70411B]/80 uppercase tracking-wider">Your Message *</label>
-                    <textarea
-                      required
-                      name="message"
-                      data-rules="required,min:10"
-                      rows="4"
-                      placeholder="Tell us what you would love to hear about..."
-                      class="w-full border-2 border-[#70411B]/10 focus:border-[#70411B] bg-[#FFF7F1]/20 rounded-xl px-4 py-3 text-sm text-[#70411B] outline-none resize-none transition-all placeholder-[#70411B]/40"
-                    ></textarea>
-                  </div>
-
-                  <!-- Button -->
-                  <button
-                    type="submit"
-                    class="w-full py-4 bg-[#70411B] hover:bg-[#9A5B2A] text-white font-sans font-bold tracking-wide rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer mt-2"
-                  >
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                    <span>Send via WhatsApp Support</span>
-                  </button>
-
-                  <div id="contact-success" class="hidden p-3.5 rounded-xl bg-[#A9C1A5]/25 border border-[#A9C1A5]/40 text-[#70411B] text-xs font-semibold flex items-center gap-2 justify-center">
-                    <svg class="w-4 h-4 text-[#9A5B2A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
-                    <span>Your WhatsApp message layout has been created successfully!</span>
-                  </div>
-
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
 

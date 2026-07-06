@@ -26,7 +26,28 @@
 <style>
   @keyframes stitched-march { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -280; } }
   @keyframes badge-fade-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-  #gallery-lightbox-close:hover { background:#70411B; color:white; transform:scale(1.08); }
+  @keyframes galleryFadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes galleryGlow {
+    0%, 100% { box-shadow: 0 4px 20px rgba(223,168,180,0.15); }
+    50% { box-shadow: 0 8px 30px rgba(223,168,180,0.35); }
+  }
+  @keyframes threadFloat {
+    0%, 100% { stroke-dashoffset: 0; opacity: 0.3; }
+    50% { stroke-dashoffset: -20; opacity: 0.7; }
+  }
+  @keyframes threadGlow {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(223,168,180,0.3)); }
+    50% { filter: drop-shadow(0 0 12px rgba(223,168,180,0.8)); }
+  }
+  @keyframes likePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  #gallery-lightbox-close:hover { background: linear-gradient(135deg, #DFA8B4, #c9899f); color:white; transform:scale(1.08); box-shadow: 0 4px 15px rgba(223,168,180,0.5); }
   #gallery-lightbox-close:active { transform:scale(0.95); }
 </style>
 <style>
@@ -47,19 +68,19 @@
   }
   #cart-btn:hover, #wishlist-btn:hover {
     box-shadow: 0 0 10px rgba(223,168,180,0.5), 0 0 25px rgba(223,168,180,0.3), 0 0 50px rgba(223,168,180,0.15);
-    background-color: rgba(244,233,225,0.9);
+    background-color: rgba(247,216,222,0.3);
     transform: scale(1.1);
   }
 
   /* Badge notification pulse */
   @keyframes badge-pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.5); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.7); }
     50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(223,168,180,0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0); }
   }
   @keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 4px rgba(223,168,180,0.4); }
-    50% { box-shadow: 0 0 12px rgba(223,168,180,0.8), 0 0 20px rgba(223,168,180,0.4); }
+    0%, 100% { box-shadow: 0 0 6px rgba(223,168,180,0.6); }
+    50% { box-shadow: 0 0 15px rgba(223,168,180,0.9), 0 0 25px rgba(223,168,180,0.5); }
   }
   #cart-btn .absolute.-top-1, #wishlist-btn .absolute.-top-1 {
     animation: badge-glow 2s ease-in-out infinite;
@@ -164,7 +185,7 @@
         <div class="flex items-center gap-3.5 md:gap-5">
           <button id="wishlist-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="View Wishlist"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
           </button>
-          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 2px 8px rgba(223,168,180,0.5); display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           </button>
           <a href="custom.html" class="hidden md:flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-[#FFF7F1] border border-[#70411B]/15 text-[#70411B] rounded-full hover:bg-[#9A5B2A]/20 transition-all duration-300 cursor-pointer">
             <svg class="w-3.5 h-3.5 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
@@ -205,17 +226,43 @@
       <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
         <!-- Header Grid Title -->
-        <div class="text-center max-w-2xl mx-auto mb-16">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#9A5B2A]/20 border border-[#DFA8B4]/40 text-[#70411B] text-xs font-semibold tracking-wider uppercase mb-5 animate-[fadeInUp_0.6s_ease-out_both]">
-            <span>📱</span>
+        <div class="text-center max-w-2xl mx-auto mb-16 relative">
+          <!-- Animated glowing thread SVG -->
+          <svg class="absolute -top-8 left-1/2 -translate-x-1/2 w-64 h-16 pointer-events-none" viewBox="0 0 256 60" fill="none" style="animation: threadGlow 3s ease-in-out infinite;">
+            <path d="M 20 50 C 60 10, 100 50, 140 20 C 180 -10, 220 40, 240 30" stroke="url(#galleryThreadGrad)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8 6" style="animation: threadFloat 3s ease-in-out infinite;" />
+            <defs>
+              <linearGradient id="galleryThreadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#DFA8B4;stop-opacity:0.6" />
+                <stop offset="50%" style="stop-color:#c9899f;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#DFA8B4;stop-opacity:0.6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#DFA8B4]/40 text-[#70411B] text-xs font-semibold tracking-wider uppercase mb-5" style="background: linear-gradient(135deg, rgba(247,216,222,0.3), rgba(255,247,241,0.8)); animation: galleryFadeInUp 0.6s ease-out both;">
+            <span>&#x1F4F7;</span>
             <span>Pinterest Aesthetics</span>
           </div>
-          <h1 class="font-serif text-4xl md:text-5xl font-bold text-[#70411B] tracking-tight mb-4">
+          <h1 class="font-serif text-4xl md:text-5xl font-bold text-[#70411B] tracking-tight mb-4" style="animation: galleryFadeInUp 0.6s ease-out 0.1s both;">
             Cozy Universe Gallery
           </h1>
-          <p class="font-sans text-[#70411B]/80 text-base leading-relaxed">
+          <p class="font-sans text-[#70411B]/80 text-base leading-relaxed" style="animation: galleryFadeInUp 0.6s ease-out 0.2s both;">
             See how our beautiful crochet companions, wearables, and vintage floral shoulder bags style real lives, shared by our cozy community.
           </p>
+        </div>
+
+        <!-- Animated glowing thread connecting gallery -->
+        <div class="relative mb-8">
+          <svg class="w-full h-8 pointer-events-none" viewBox="0 0 800 32" fill="none" preserveAspectRatio="none" style="animation: threadGlow 4s ease-in-out infinite;">
+            <path d="M 0 16 Q 100 4, 200 16 T 400 16 T 600 16 T 800 16" stroke="url(#galleryThreadGrad2)" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 8" style="animation: threadFloat 4s ease-in-out infinite;" />
+            <defs>
+              <linearGradient id="galleryThreadGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#DFA8B4;stop-opacity:0.2" />
+                <stop offset="30%" style="stop-color:#c9899f;stop-opacity:0.8" />
+                <stop offset="70%" style="stop-color:#DFA8B4;stop-opacity:0.8" />
+                <stop offset="100%" style="stop-color:#c9899f;stop-opacity:0.2" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
 
         <!-- Pinterest Masonry Bento Grid Layout -->
@@ -242,7 +289,7 @@
           <img id="lightbox-img" src="" alt="" style="display:block; width:100%; height:100%; object-fit:cover;" referrerpolicy="no-referrer" />
           <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.2), transparent 50%); pointer-events:none;"></div>
           <span style="position:absolute; bottom:20px; left:20px; padding:8px 16px; background:white; border:1px solid rgba(112,65,27,0.1); border-radius:9999px; font-size:11px; font-weight:700; color:#70411B; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:center; gap:8px; font-family:Manrope,sans-serif; animation:badge-fade-in 600ms 300ms both;">
-            <svg style="width:14px; height:14px; color:#DFA8B4;" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
+            <svg style="width:14px; height:14px; color:#DFA8B4; filter: drop-shadow(0 0 4px rgba(223,168,180,0.5));" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
             Oouniverse Certified Warm
           </span>
         </div>
@@ -251,8 +298,8 @@
           <p id="lightbox-desc" style="font-family:Manrope,sans-serif; font-size:15px; color:rgba(112,65,27,0.7); line-height:1.7; margin:0;"></p>
           <div style="display:flex; align-items:center; justify-content:space-between; margin-top:28px; padding-top:18px; border-top:1px solid rgba(112,65,27,0.1); font-size:13px; color:rgba(112,65,27,0.45); font-family:Manrope,sans-serif;">
             <span>Uploaded October 2026</span>
-            <span style="display:flex; align-items:center; gap:8px; background:rgba(223,168,180,0.12); padding:6px 14px; border-radius:9999px;">
-              <svg style="width:14px; height:14px; color:#DFA8B4;" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
+            <span style="display:flex; align-items:center; gap:8px; background: linear-gradient(135deg, rgba(223,168,180,0.2), rgba(201,137,159,0.15)); padding:6px 14px; border-radius:9999px; box-shadow: 0 2px 8px rgba(223,168,180,0.15);">
+              <svg style="width:14px; height:14px; color:#DFA8B4; filter: drop-shadow(0 0 4px rgba(223,168,180,0.5));" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
               <span id="lightbox-likes" style="font-weight:600; color:#70411B;"></span>
               <span>cozy likes</span>
             </span>
@@ -324,23 +371,24 @@
         grid.innerHTML = '';
         items.forEach((item, idx) => {
           const card = document.createElement('div');
-          card.className = 'break-inside-avoid bg-white rounded-[24px] overflow-hidden border border-[#70411B]/10 shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all duration-400 group relative cursor-pointer';
+          card.className = 'break-inside-avoid rounded-[24px] overflow-hidden border border-[#DFA8B4]/15 shadow-sm hover:shadow-2xl hover:translate-y-[-6px] transition-all duration-500 group relative cursor-pointer';
+          card.style.cssText = `background: linear-gradient(135deg, rgba(247,216,222,0.15), rgba(255,247,241,0.95)); opacity:0; transform:translateY(30px); animation: galleryFadeInUp 0.6s ease-out ${0.1 * idx}s forwards;`;
           card.innerHTML = `
-            <div class="absolute inset-1.5 border border-dashed border-[#70411B]/5 rounded-2xl pointer-events-none z-20"></div>
-            <div class="overflow-hidden bg-[#F4E9E1] relative">
+            <div class="absolute inset-1.5 border border-dashed border-[#DFA8B4]/15 rounded-2xl pointer-events-none z-20"></div>
+            <div class="overflow-hidden relative">
               <img src="${item.image}" alt="${item.title}" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out" referrerpolicy="no-referrer" loading="lazy" />
-              <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span class="p-3 bg-white/90 backdrop-blur-sm text-[#70411B] rounded-full shadow hover:scale-110 transition-transform">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(223,168,180,0.4), rgba(201,137,159,0.3));">
+                <span class="p-3 rounded-full shadow-lg" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.5); backdrop-filter:blur(4px);">
+                  <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                 </span>
               </div>
             </div>
             <div class="p-5 flex items-center justify-between z-10 relative">
               <div>
-                <h4 class="font-serif font-bold text-[#70411B] text-base group-hover:text-[#9A5B2A] transition-colors">${item.title}</h4>
+                <h4 class="font-serif font-bold text-[#70411B] text-base group-hover:text-[#c9899f] transition-colors">${item.title}</h4>
                 <p class="text-xs text-[#70411B]/60 leading-relaxed mt-1 line-clamp-1">${item.description}</p>
               </div>
-              <button class="gallery-like-btn flex items-center gap-1 text-xs font-semibold py-1.5 px-3 rounded-full transition-all cursor-pointer ${item.liked ? 'bg-[#9A5B2A]/20 border border-[#DFA8B4] text-[#DFA8B4]' : 'bg-[#FFF7F1] hover:bg-[#F4E9E1] text-[#70411B]/60 border border-[#70411B]/10'}" data-idx="${idx}" title="${item.liked ? 'Unlike creation' : 'Like creation'}">
+              <button class="gallery-like-btn flex items-center gap-1 text-xs font-semibold py-1.5 px-3 rounded-full transition-all cursor-pointer ${item.liked ? 'border border-[#DFA8B4] text-white' : 'hover:border-[#DFA8B4]/50 text-[#70411B]/60 border border-[#DFA8B4]/10'}" style="${item.liked ? 'background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 2px 10px rgba(223,168,180,0.4);' : 'background: rgba(247,216,222,0.2);'}" data-idx="${idx}" title="${item.liked ? 'Unlike creation' : 'Like creation'}">
                 <svg class="w-3.5 h-3.5 ${item.liked ? 'fill-current' : ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
                 <span>${item.likes}</span>
               </button>
@@ -451,13 +499,13 @@
           <h4 class="font-serif text-sm font-bold text-[#70411B] uppercase tracking-widest mb-4">Join the Club</h4>
           <p class="text-[11px] text-[#70411B]/75 leading-relaxed mb-4">Receive exclusive early access to restocks, limited pattern drops, and vintage design stories. No spam, only cozy.</p>
           <form id="newsletter-form" class="relative w-full flex items-center" novalidate>
-            <input type="email" required placeholder="Your warm email..." aria-label="Email address for newsletter" class="w-full bg-white border-2 border-[#70411B]/15 focus:border-[#70411B] outline-none rounded-xl px-4 py-3 text-xs text-[#70411B] pr-12 font-medium" />
-            <button type="submit" class="absolute right-1.5 p-2 bg-[#70411B] hover:bg-[#9A5B2A] text-white rounded-lg transition-colors cursor-pointer" title="Subscribe">
+            <input type="email" required placeholder="Your warm email..." aria-label="Email address for newsletter" class="w-full border-2 border-[#DFA8B4]/30 focus:border-[#DFA8B4] outline-none rounded-xl px-4 py-3 text-xs text-[#70411B] pr-12 font-medium" style="background: rgba(255,255,255,0.7); backdrop-filter: blur(8px); box-shadow: 0 2px 8px rgba(223,168,180,0.1); transition: all 0.3s ease;" onfocus="this.style.boxShadow='0 0 0 4px rgba(223,168,180,0.15), 0 2px 8px rgba(223,168,180,0.1)'" onblur="this.style.boxShadow='0 2px 8px rgba(223,168,180,0.1)'" />
+            <button type="submit" class="absolute right-1.5 p-2 text-white rounded-lg transition-all cursor-pointer" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 2px 8px rgba(223,168,180,0.4);" title="Subscribe" onmouseover="this.style.background='linear-gradient(135deg, #c9899f, #DFA8B4)'; this.style.boxShadow='0 4px 15px rgba(223,168,180,0.6)'" onmouseout="this.style.background='linear-gradient(135deg, #DFA8B4, #c9899f)'; this.style.boxShadow='0 2px 8px rgba(223,168,180,0.4)'">
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </button>
           </form>
-          <div id="newsletter-success" class="hidden mt-3 text-[10px] font-semibold text-[#70411B] bg-white border border-[#A9C1A5] p-2 rounded-lg flex items-center gap-1">
-            <svg class="w-3.5 h-3.5 text-[#A9C1A5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
+          <div id="newsletter-success" class="hidden mt-3 text-[10px] font-semibold text-[#70411B] p-2 rounded-lg flex items-center gap-1" style="background: rgba(255,255,255,0.7); backdrop-filter: blur(8px); border: 1px solid rgba(223,168,180,0.3); box-shadow: 0 2px 8px rgba(223,168,180,0.1);">
+            <svg class="w-3.5 h-3.5" style="color: #DFA8B4;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
             <span>Subscribed! Check your inbox for cozy warmth.</span>
           </div>
         </div>

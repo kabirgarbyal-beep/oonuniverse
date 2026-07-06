@@ -41,19 +41,19 @@
   }
   #cart-btn:hover, #wishlist-btn:hover {
     box-shadow: 0 0 10px rgba(223,168,180,0.5), 0 0 25px rgba(223,168,180,0.3), 0 0 50px rgba(223,168,180,0.15);
-    background-color: rgba(244,233,225,0.9);
+    background-color: rgba(247,216,222,0.3);
     transform: scale(1.1);
   }
 
   /* Badge notification pulse */
   @keyframes badge-pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.5); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.7); }
     50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(223,168,180,0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0); }
   }
   @keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 4px rgba(223,168,180,0.4); }
-    50% { box-shadow: 0 0 12px rgba(223,168,180,0.8), 0 0 20px rgba(223,168,180,0.4); }
+    0%, 100% { box-shadow: 0 0 6px rgba(223,168,180,0.6); }
+    50% { box-shadow: 0 0 15px rgba(223,168,180,0.9), 0 0 25px rgba(223,168,180,0.5); }
   }
   #cart-btn .absolute.-top-1, #wishlist-btn .absolute.-top-1 {
     animation: badge-glow 2s ease-in-out infinite;
@@ -162,7 +162,7 @@
         <div class="flex items-center gap-3.5 md:gap-5">
           <button id="wishlist-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="View Wishlist"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
           </button>
-          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 2px 8px rgba(223,168,180,0.5); display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           </button>
           <a href="custom.html" class="hidden md:flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-[#FFF7F1] border border-[#70411B]/15 text-[#70411B] rounded-full hover:bg-[#9A5B2A]/20 transition-all duration-300 cursor-pointer">
             <svg class="w-3.5 h-3.5 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
@@ -215,40 +215,52 @@
         <div class="max-w-7xl mx-auto px-6 md:px-12">
           <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative" id="shop-filter-row" data-aos="fade-up">
             <!-- Search -->
-            <div class="flex items-center gap-3 w-full md:w-72 lg:w-80">
-              <div class="relative flex-1">
-                <input type="text" id="shop-search" placeholder="Search our cozy crafts..." aria-label="Search products" class="w-full bg-white border-2 border-[#70411B]/15 focus:border-[#70411B] outline-none rounded-xl px-4 py-3 text-xs text-[#70411B] font-medium placeholder-[#70411B]/40 transition-colors duration-300" />
+            <div class="flex items-center gap-3 w-full md:w-80 lg:w-96">
+              <div class="relative flex-1 group">
+                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#70411B]/40 group-focus-within:text-[#DFA8B4] transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" id="shop-search" placeholder="Search cozy crafts..." aria-label="Search products" class="w-full bg-white/80 backdrop-blur-sm border-2 border-[#70411B]/10 focus:border-[#DFA8B4] focus:shadow-[0_0_0_4px_rgba(223,168,180,0.15)] outline-none rounded-2xl pl-10 pr-4 py-3.5 text-xs text-[#70411B] font-medium placeholder-[#70411B]/35 transition-all duration-300" />
               </div>
-              <button id="shop-search-btn" class="shrink-0 w-11 h-11 flex items-center justify-center bg-[#70411B] text-white rounded-xl hover:bg-[#9A5B2A] transition-colors duration-300 cursor-pointer" title="Search">
+              <button id="shop-search-btn" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.3);" onmouseover="this.style.boxShadow='0 6px 20px rgba(223,168,180,0.5)'; this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='0 4px 15px rgba(223,168,180,0.3)'; this.style.transform='translateY(0)'" class="shrink-0 w-12 h-12 flex items-center justify-center text-white rounded-2xl transition-all duration-300 cursor-pointer" title="Search">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               </button>
             </div>
             <!-- Sort -->
-            <div class="relative w-full md:w-48" id="sort-dropdown-wrapper">
-              <button id="shop-sort-btn" class="w-full flex items-center justify-between gap-2 bg-white border-2 border-[#70411B]/15 focus:border-[#70411B] outline-none rounded-xl px-4 py-3 text-xs text-[#70411B] font-medium cursor-pointer transition-colors duration-300" aria-haspopup="listbox" aria-expanded="false">
-                <span id="sort-selected-text">Recommended</span>
-                <svg class="w-3.5 h-3.5 text-[#70411B]/50 transition-transform duration-200 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            <div class="relative w-full md:w-52" id="sort-dropdown-wrapper">
+              <button id="shop-sort-btn" class="w-full flex items-center justify-between gap-2 bg-white/80 backdrop-blur-sm border-2 border-[#70411B]/10 focus:border-[#DFA8B4] focus:shadow-[0_0_0_4px_rgba(223,168,180,0.15)] outline-none rounded-2xl px-5 py-3.5 text-xs text-[#70411B] font-medium cursor-pointer transition-all duration-300 hover:border-[#DFA8B4]/50" aria-haspopup="listbox" aria-expanded="false">
+                <span class="flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M6 12h12M9 18h6"/></svg>
+                  <span id="sort-selected-text">Recommended</span>
+                </span>
+                <svg class="w-3.5 h-3.5 text-[#70411B]/40 transition-transform duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
               </button>
-              <ul id="shop-sort-menu" class="hidden absolute left-0 top-full mt-1.5 w-full bg-white border border-[#70411B]/15 rounded-xl shadow-xl shadow-[#70411B]/8 overflow-hidden z-40" role="listbox" aria-label="Sort products">
-                <li class="sort-option px-5 py-3 text-xs font-semibold text-[#70411B] hover:bg-[#F4E9E1] cursor-pointer transition-colors duration-150" data-value="recommended" role="option" aria-selected="true">Recommended</li>
-                <li class="sort-option px-5 py-3 text-xs font-medium text-[#70411B]/70 hover:bg-[#F4E9E1] cursor-pointer transition-colors duration-150" data-value="price-low" role="option">Price: Low to High</li>
-                <li class="sort-option px-5 py-3 text-xs font-medium text-[#70411B]/70 hover:bg-[#F4E9E1] cursor-pointer transition-colors duration-150" data-value="price-high" role="option">Price: High to Low</li>
-                <li class="sort-option px-5 py-3 text-xs font-medium text-[#70411B]/70 hover:bg-[#F4E9E1] cursor-pointer transition-colors duration-150" data-value="rating" role="option">Top Rated</li>
+              <ul id="shop-sort-menu" class="hidden absolute left-0 top-full mt-2 w-full bg-white/95 backdrop-blur-md border border-[#70411B]/8 rounded-2xl shadow-2xl shadow-[#70411B]/10 overflow-hidden z-40 py-1.5" role="listbox" aria-label="Sort products">
+                <li class="sort-option px-5 py-3 text-xs font-semibold text-[#70411B] hover:bg-gradient-to-r hover:from-[#F7D8DE]/30 hover:to-transparent cursor-pointer transition-all duration-200 flex items-center gap-2.5" data-value="recommended" role="option" aria-selected="true">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#DFA8B4]"></span>Recommended
+                </li>
+                <li class="sort-option px-5 py-3 text-xs font-medium text-[#70411B]/60 hover:bg-gradient-to-r hover:from-[#F7D8DE]/30 hover:to-transparent cursor-pointer transition-all duration-200 flex items-center gap-2.5" data-value="price-low" role="option">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#F4E9E1]"></span>Price: Low to High
+                </li>
+                <li class="sort-option px-5 py-3 text-xs font-medium text-[#70411B]/60 hover:bg-gradient-to-r hover:from-[#F7D8DE]/30 hover:to-transparent cursor-pointer transition-all duration-200 flex items-center gap-2.5" data-value="price-high" role="option">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#F4E9E1]"></span>Price: High to Low
+                </li>
+                <li class="sort-option px-5 py-3 text-xs font-medium text-[#70411B]/60 hover:bg-gradient-to-r hover:from-[#F7D8DE]/30 hover:to-transparent cursor-pointer transition-all duration-200 flex items-center gap-2.5" data-value="rating" role="option">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Top Rated
+                </li>
               </ul>
             </div>
             <input type="hidden" id="shop-sort" value="recommended" />
           </div>
           <!-- Category Filter Tabs -->
-          <div class="flex flex-wrap items-center gap-2 mt-6" data-aos="fade-up" data-aos-delay="100">
-            <button class="category-filter active px-4 py-2 bg-[#70411B] text-white text-[10px] font-bold tracking-wider rounded-full transition-all cursor-pointer" data-category="all">All Items</button>
-            <button class="category-filter px-4 py-2 bg-white border border-[#70411B]/15 text-[#70411B]/80 text-[10px] font-bold tracking-wider rounded-full hover:bg-[#F4E9E1] transition-all cursor-pointer" data-category="bags">Crochet Bags</button>
-            <button class="category-filter px-4 py-2 bg-white border border-[#70411B]/15 text-[#70411B]/80 text-[10px] font-bold tracking-wider rounded-full hover:bg-[#F4E9E1] transition-all cursor-pointer" data-category="plushies">Plushies</button>
-            <button class="category-filter px-4 py-2 bg-white border border-[#70411B]/15 text-[#70411B]/80 text-[10px] font-bold tracking-wider rounded-full hover:bg-[#F4E9E1] transition-all cursor-pointer" data-category="flowers">Eternal Flowers</button>
-            <button class="category-filter px-4 py-2 bg-white border border-[#70411B]/15 text-[#70411B]/80 text-[10px] font-bold tracking-wider rounded-full hover:bg-[#F4E9E1] transition-all cursor-pointer" data-category="accessories">Accessories</button>
-            <button class="category-filter px-4 py-2 bg-white border border-[#70411B]/15 text-[#70411B]/80 text-[10px] font-bold tracking-wider rounded-full hover:bg-[#F4E9E1] transition-all cursor-pointer" data-category="keychains">Keychains</button>
-            <button class="category-filter px-4 py-2 bg-white border border-[#70411B]/15 text-[#70411B]/80 text-[10px] font-bold tracking-wider rounded-full hover:bg-[#F4E9E1] transition-all cursor-pointer" data-category="coasters">Coasters</button>
-            <button class="category-filter px-4 py-2 bg-white border border-[#70411B]/15 text-[#70411B]/80 text-[10px] font-bold tracking-wider rounded-full hover:bg-[#F4E9E1] transition-all cursor-pointer" data-category="homedecor">Home Decor</button>
-            <button class="category-filter px-4 py-2 bg-white border border-[#70411B]/15 text-[#70411B]/80 text-[10px] font-bold tracking-wider rounded-full hover:bg-[#F4E9E1] transition-all cursor-pointer" data-category="wearables">Wearables</button>
+          <div class="flex flex-wrap items-center gap-2.5 mt-6" data-aos="fade-up" data-aos-delay="100">
+            <button class="category-filter active px-5 py-2.5 text-[10px] font-bold tracking-wider rounded-full transition-all duration-300 cursor-pointer" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); color: #fff; box-shadow: 0 4px 15px rgba(223,168,180,0.3);" data-category="all">All Items</button>
+            <button class="category-filter px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-[#70411B]/10 text-[#70411B]/70 text-[10px] font-bold tracking-wider rounded-full hover:border-[#DFA8B4]/40 hover:text-[#70411B] hover:shadow-md hover:shadow-[#DFA8B4]/10 transition-all duration-300 cursor-pointer" data-category="bags">Crochet Bags</button>
+            <button class="category-filter px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-[#70411B]/10 text-[#70411B]/70 text-[10px] font-bold tracking-wider rounded-full hover:border-[#DFA8B4]/40 hover:text-[#70411B] hover:shadow-md hover:shadow-[#DFA8B4]/10 transition-all duration-300 cursor-pointer" data-category="plushies">Plushies</button>
+            <button class="category-filter px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-[#70411B]/10 text-[#70411B]/70 text-[10px] font-bold tracking-wider rounded-full hover:border-[#DFA8B4]/40 hover:text-[#70411B] hover:shadow-md hover:shadow-[#DFA8B4]/10 transition-all duration-300 cursor-pointer" data-category="flowers">Eternal Flowers</button>
+            <button class="category-filter px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-[#70411B]/10 text-[#70411B]/70 text-[10px] font-bold tracking-wider rounded-full hover:border-[#DFA8B4]/40 hover:text-[#70411B] hover:shadow-md hover:shadow-[#DFA8B4]/10 transition-all duration-300 cursor-pointer" data-category="accessories">Accessories</button>
+            <button class="category-filter px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-[#70411B]/10 text-[#70411B]/70 text-[10px] font-bold tracking-wider rounded-full hover:border-[#DFA8B4]/40 hover:text-[#70411B] hover:shadow-md hover:shadow-[#DFA8B4]/10 transition-all duration-300 cursor-pointer" data-category="keychains">Keychains</button>
+            <button class="category-filter px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-[#70411B]/10 text-[#70411B]/70 text-[10px] font-bold tracking-wider rounded-full hover:border-[#DFA8B4]/40 hover:text-[#70411B] hover:shadow-md hover:shadow-[#DFA8B4]/10 transition-all duration-300 cursor-pointer" data-category="coasters">Coasters</button>
+            <button class="category-filter px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-[#70411B]/10 text-[#70411B]/70 text-[10px] font-bold tracking-wider rounded-full hover:border-[#DFA8B4]/40 hover:text-[#70411B] hover:shadow-md hover:shadow-[#DFA8B4]/10 transition-all duration-300 cursor-pointer" data-category="homedecor">Home Decor</button>
+            <button class="category-filter px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-[#70411B]/10 text-[#70411B]/70 text-[10px] font-bold tracking-wider rounded-full hover:border-[#DFA8B4]/40 hover:text-[#70411B] hover:shadow-md hover:shadow-[#DFA8B4]/10 transition-all duration-300 cursor-pointer" data-category="wearables">Wearables</button>
           </div>
         </div>
       </section>

@@ -41,25 +41,42 @@
   }
   #cart-btn:hover, #wishlist-btn:hover {
     box-shadow: 0 0 10px rgba(223,168,180,0.5), 0 0 25px rgba(223,168,180,0.3), 0 0 50px rgba(223,168,180,0.15);
-    background-color: rgba(244,233,225,0.9);
+    background-color: rgba(247,216,222,0.3);
     transform: scale(1.1);
   }
 
   /* Badge notification pulse */
   @keyframes badge-pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.5); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0.7); }
     50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(223,168,180,0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223,168,180,0); }
   }
   @keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 4px rgba(223,168,180,0.4); }
-    50% { box-shadow: 0 0 12px rgba(223,168,180,0.8), 0 0 20px rgba(223,168,180,0.4); }
+    0%, 100% { box-shadow: 0 0 6px rgba(223,168,180,0.6); }
+    50% { box-shadow: 0 0 15px rgba(223,168,180,0.9), 0 0 25px rgba(223,168,180,0.5); }
   }
   #cart-btn .absolute.-top-1, #wishlist-btn .absolute.-top-1 {
     animation: badge-glow 2s ease-in-out infinite;
   }
   #cart-btn .absolute.-top-1.badge-pop, #wishlist-btn .absolute.-top-1.badge-pop {
     animation: badge-pulse 0.5s cubic-bezier(0.34,1.56,0.64,1), badge-glow 2s ease-in-out infinite 0.5s;
+  }
+
+  /* Timeline animations */
+  @keyframes fadeInTimeline {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes thread-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  @keyframes stitch-move {
+    0% { top: 0; }
+    100% { top: 100%; }
+  }
+  @keyframes thread-dash {
+    to { stroke-dashoffset: -28; }
   }
 </style>
 </head>
@@ -158,7 +175,7 @@
         <div class="flex items-center gap-3.5 md:gap-5">
           <button id="wishlist-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="View Wishlist"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
           </button>
-          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 bg-[#DFA8B4] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#F4E9E1] text-[#70411B] hover:text-[#9A5B2A] transition-all duration-300 cursor-pointer" title="Open Shopping Cart"> <span class="absolute -top-1 -right-1 min-w-[16px] h-4 text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 2px 8px rgba(223,168,180,0.5); display: none;">0</span> <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           </button>
           <a href="custom.html" class="hidden md:flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-[#FFF7F1] border border-[#70411B]/15 text-[#70411B] rounded-full hover:bg-[#9A5B2A]/20 transition-all duration-300 cursor-pointer">
             <svg class="w-3.5 h-3.5 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-3.3 2.7-6 6-6s6 2.7 6 6Z"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
@@ -217,14 +234,24 @@
 
           <!-- Left Visual Collage -->
           <div class="lg:col-span-5 relative h-[380px] sm:h-[450px]">
-            <!-- Primary collage item -->
-            <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-[32px] overflow-hidden border-4 border-white shadow-xl z-20 left-0 top-0">
+            <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-[32px] overflow-hidden border-4 border-white shadow-xl z-20 left-0 top-0" style="box-shadow: 0 8px 32px rgba(223,168,180,0.25), 0 4px 12px rgba(0,0,0,0.08);">
               <picture><source srcset="assets/images/crochet_wearables_1783006542606.webp" type="image/webp"><img src="assets/images/crochet_wearables_1783006542606.jpg" alt="Cozy Shrug Cardigan Stitching" class="w-full h-full object-cover" referrerpolicy="no-referrer" loading="lazy"/></picture>
             </div>
-            <!-- Secondary collage item -->
-            <div class="absolute w-44 h-44 sm:w-56 sm:h-56 rounded-[24px] overflow-hidden border-4 border-white shadow-lg z-10 right-0 bottom-0">
+            <div class="absolute w-44 h-44 sm:w-56 sm:h-56 rounded-[24px] overflow-hidden border-4 border-white shadow-lg z-10 right-0 bottom-0" style="box-shadow: 0 8px 32px rgba(223,168,180,0.2), 0 4px 12px rgba(0,0,0,0.08);">
               <picture><source srcset="assets/images/crochet_bags_hero_1783006461148.webp" type="image/webp"><img src="assets/images/crochet_bags_hero_1783006461148.jpg" alt="Our crochet shoulder bag styling" class="w-full h-full object-cover" referrerpolicy="no-referrer" loading="lazy"/></picture>
             </div>
+            <!-- Animated glowing thread connecting the images -->
+            <svg class="absolute inset-0 w-full h-full z-30 pointer-events-none" viewBox="0 0 400 450" fill="none">
+              <path d="M 260 200 C 300 250, 350 280, 320 340" stroke="url(#thread-gradient)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8 6" style="animation: thread-dash 2s linear infinite;">
+              </path>
+              <defs>
+                <linearGradient id="thread-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#DFA8B4;stop-opacity:0.8"/>
+                  <stop offset="50%" style="stop-color:#c9899f;stop-opacity:1"/>
+                  <stop offset="100%" style="stop-color:#DFA8B4;stop-opacity:0.8"/>
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
 
           <!-- Right Text Stories -->
@@ -240,13 +267,12 @@
             </p>
 
             <!-- Designer quote -->
-            <div class="p-5 bg-white border border-[#70411B]/10 rounded-2xl relative shadow-sm">
-              <!-- Stitch border -->
-              <div class="absolute inset-1.5 border border-dashed border-[#70411B]/5 rounded-xl"></div>
-              <p class="font-serif italic text-sm text-[#9A5B2A] leading-relaxed">
+            <div class="rounded-2xl relative shadow-lg p-5 border border-[#DFA8B4]/15" style="background: linear-gradient(135deg, rgba(247,216,222,0.25), rgba(255,247,241,0.8));">
+              <div class="absolute inset-1.5 border border-dashed border-[#DFA8B4]/20 rounded-xl pointer-events-none"></div>
+              <p class="font-serif italic text-sm text-[#70411B] leading-relaxed">
                 "When you hold one of our crochet plushies or sling a shoulder bag, you are holding 12 hours of quiet meditation, soft classical music, and dedicated love from a real kniter's hands. We hope you feel that connection."
               </p>
-              <span class="block text-[10px] uppercase tracking-wider font-bold text-[#70411B] mt-3">
+              <span class="block text-[10px] uppercase tracking-wider font-bold text-[#DFA8B4] mt-3">
                 — Aditi Sharma, Loom Artist &amp; Founder
               </span>
             </div>
@@ -262,33 +288,42 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
             <!-- Value 1: Cozy Connection -->
-            <div class="bg-white rounded-3xl p-6 border border-[#70411B]/15 shadow-sm hover:shadow-md transition-shadow relative">
-              <div class="absolute inset-1.5 border border-dashed border-[#70411B]/5 rounded-2xl pointer-events-none"></div>
-              <div class="w-12 h-12 rounded-xl bg-[#FFF7F1] flex items-center justify-center mb-5 shadow-sm border border-[#70411B]/5">
-                <svg class="w-6 h-6 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            <div class="rounded-3xl p-6 border border-[#DFA8B4]/20 shadow-xl hover:shadow-2xl hover:shadow-[#DFA8B4]/15 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(247,216,222,0.2) 0%, rgba(255,247,241,0.9) 50%, rgba(244,233,225,0.4) 100%);">
+              <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)]" style="background-size:16px 16px;"></div>
+              <div class="absolute inset-2 border border-dashed border-[#DFA8B4]/15 rounded-2xl pointer-events-none"></div>
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.4);">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                </div>
+                <h4 class="font-serif font-bold text-lg text-[#70411B] mb-2">Cozy Connection</h4>
+                <p class="text-xs text-[#70411B]/70 leading-relaxed">Every item we make is infused with gentle care, bringing Studio Ghibli warmth and comfort straight to your bookshelves, desks, and shoulders.</p>
               </div>
-              <h4 class="font-serif font-bold text-lg text-[#70411B] mb-2">Cozy Connection</h4>
-              <p class="text-xs text-[#70411B]/70 leading-relaxed">Every item we make is infused with gentle care, bringing Studio Ghibli warmth and comfort straight to your bookshelves, desks, and shoulders.</p>
             </div>
 
             <!-- Value 2: Ethical Sourcing -->
-            <div class="bg-white rounded-3xl p-6 border border-[#70411B]/15 shadow-sm hover:shadow-md transition-shadow relative">
-              <div class="absolute inset-1.5 border border-dashed border-[#70411B]/5 rounded-2xl pointer-events-none"></div>
-              <div class="w-12 h-12 rounded-xl bg-[#FFF7F1] flex items-center justify-center mb-5 shadow-sm border border-[#70411B]/5">
-                <svg class="w-6 h-6 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
+            <div class="rounded-3xl p-6 border border-[#DFA8B4]/20 shadow-xl hover:shadow-2xl hover:shadow-[#DFA8B4]/15 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(247,216,222,0.2) 0%, rgba(255,247,241,0.9) 50%, rgba(244,233,225,0.4) 100%);">
+              <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)]" style="background-size:16px 16px;"></div>
+              <div class="absolute inset-2 border border-dashed border-[#DFA8B4]/15 rounded-2xl pointer-events-none"></div>
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.4);">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 2.5-3.5 2.5-5.5A4.5 4.5 0 0 0 12 5.5 4.5 4.5 0 0 0 2.5 8.5c0 2 1 3.5 2.5 5.5L12 22l7-8Z"/></svg>
+                </div>
+                <h4 class="font-serif font-bold text-lg text-[#70411B] mb-2">Ethical Sourcing</h4>
+                <p class="text-xs text-[#70411B]/70 leading-relaxed">We support independent female artisans. We exclusively source unbleached, organic Coimbatore cotton yarns and premium Himalayan merino wool blends.</p>
               </div>
-              <h4 class="font-serif font-bold text-lg text-[#70411B] mb-2">Ethical Sourcing</h4>
-              <p class="text-xs text-[#70411B]/70 leading-relaxed">We support independent female artisans. We exclusively source unbleached, organic Coimbatore cotton yarns and premium Himalayan merino wool blends.</p>
             </div>
 
             <!-- Value 3: Zero Industrial Mass -->
-            <div class="bg-white rounded-3xl p-6 border border-[#70411B]/15 shadow-sm hover:shadow-md transition-shadow relative">
-              <div class="absolute inset-1.5 border border-dashed border-[#70411B]/5 rounded-2xl pointer-events-none"></div>
-              <div class="w-12 h-12 rounded-xl bg-[#FFF7F1] flex items-center justify-center mb-5 shadow-sm border border-[#70411B]/5">
-                <svg class="w-6 h-6 text-[#DFA8B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <div class="rounded-3xl p-6 border border-[#DFA8B4]/20 shadow-xl hover:shadow-2xl hover:shadow-[#DFA8B4]/15 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(247,216,222,0.2) 0%, rgba(255,247,241,0.9) 50%, rgba(244,233,225,0.4) 100%);">
+              <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#70411B_1.5px,transparent_1.5px)]" style="background-size:16px 16px;"></div>
+              <div class="absolute inset-2 border border-dashed border-[#DFA8B4]/15 rounded-2xl pointer-events-none"></div>
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 4px 15px rgba(223,168,180,0.4);">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                </div>
+                <h4 class="font-serif font-bold text-lg text-[#70411B] mb-2">Zero Industrial Mass</h4>
+                <p class="text-xs text-[#70411B]/70 leading-relaxed">No heavy machines, no assembly lines, no generic templates. Every single loop is manually threaded, checked, and approved by a single artist.</p>
               </div>
-              <h4 class="font-serif font-bold text-lg text-[#70411B] mb-2">Zero Industrial Mass</h4>
-              <p class="text-xs text-[#70411B]/70 leading-relaxed">No heavy machines, no assembly lines, no generic templates. Every single loop is manually threaded, checked, and approved by a single artist.</p>
             </div>
 
           </div>
@@ -299,45 +334,59 @@
           <h2 class="font-serif text-3xl font-bold text-[#70411B] text-center mb-16">
             The Stitch Timeline
           </h2>
-          <div class="max-w-3xl mx-auto relative pl-8 border-l-2 border-dashed border-[#9A5B2A]/40 flex flex-col gap-12">
+          <div class="max-w-3xl mx-auto relative pl-10 flex flex-col gap-14">
+            <!-- Animated glowing thread line -->
+            <div class="absolute left-[18px] top-0 bottom-0 w-[3px] rounded-full overflow-hidden" style="background: rgba(223,168,180,0.15);">
+              <div class="w-full h-full" style="background: linear-gradient(180deg, transparent 0%, #DFA8B4 20%, #c9899f 50%, #DFA8B4 80%, transparent 100%); animation: thread-glow 3s ease-in-out infinite;"></div>
+            </div>
+            <!-- Animated stitching dots -->
+            <div class="absolute left-[15px] top-0 bottom-0 w-[11px] pointer-events-none">
+              <div class="w-[11px] h-[11px] rounded-full border-[3px] border-white" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 0 12px rgba(223,168,180,0.6), 0 0 24px rgba(223,168,180,0.3); animation: stitch-move 4s linear infinite;"></div>
+            </div>
 
             <!-- 2024 -->
-            <div class="relative">
-              <span class="absolute -left-[41px] top-1 text-xl select-none">🧶</span>
-              <div class="bg-[#F4E9E1] rounded-2xl p-5 border border-[#70411B]/10 shadow-sm relative">
-                <div class="absolute top-1 right-2 border-dashed border-[#70411B]/10 rounded"></div>
-                <span class="font-serif font-bold text-lg text-[#9A5B2A] block mb-1">
+            <div class="relative timeline-item" style="opacity:0; transform:translateX(-20px); animation: fadeInTimeline 0.6s ease-out 0.2s forwards;">
+              <div class="absolute -left-[31px] top-2 w-6 h-6 rounded-full flex items-center justify-center z-10" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 0 12px rgba(223,168,180,0.5), 0 0 20px rgba(223,168,180,0.25);">
+                <span class="text-xs select-none">&#x1F528;</span>
+              </div>
+              <div class="rounded-2xl p-5 border border-[#DFA8B4]/15 shadow-lg relative overflow-hidden" style="background: linear-gradient(135deg, rgba(247,216,222,0.2), rgba(255,247,241,0.8));">
+                <div class="absolute inset-1.5 border border-dashed border-[#DFA8B4]/15 rounded-xl pointer-events-none"></div>
+                <span class="font-serif font-bold text-lg block mb-1" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                   2024 — First Stitches
                 </span>
-                <p class="text-xs text-[#70411B]/85 leading-relaxed">
+                <p class="text-xs text-[#70411B]/80 leading-relaxed">
                   Oouniverse was born in the serene foothills of Haldwani, Uttarakhand, where our founder hand-stitched her very first cute creations as heartfelt birthday gifts for friends.
                 </p>
               </div>
             </div>
 
             <!-- 2025 -->
-            <div class="relative">
-              <span class="absolute -left-[41px] top-1 text-xl select-none">🧶</span>
-              <div class="bg-[#F4E9E1] rounded-2xl p-5 border border-[#70411B]/10 shadow-sm relative">
-                <div class="absolute top-1 right-2 border-dashed border-[#70411B]/10 rounded"></div>
-                <span class="font-serif font-bold text-lg text-[#9A5B2A] block mb-1">
+            <div class="relative timeline-item" style="opacity:0; transform:translateX(-20px); animation: fadeInTimeline 0.6s ease-out 0.5s forwards;">
+              <div class="absolute -left-[31px] top-2 w-6 h-6 rounded-full flex items-center justify-center z-10" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 0 12px rgba(223,168,180,0.5), 0 0 20px rgba(223,168,180,0.25);">
+                <span class="text-xs select-none">&#x1F31F;</span>
+              </div>
+              <div class="rounded-2xl p-5 border border-[#DFA8B4]/15 shadow-lg relative overflow-hidden" style="background: linear-gradient(135deg, rgba(247,216,222,0.2), rgba(255,247,241,0.8));">
+                <div class="absolute inset-1.5 border border-dashed border-[#DFA8B4]/15 rounded-xl pointer-events-none"></div>
+                <span class="font-serif font-bold text-lg block mb-1" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                   2025 — The Viral Tiny Octo
                 </span>
-                <p class="text-xs text-[#70411B]/85 leading-relaxed">
+                <p class="text-xs text-[#70411B]/80 leading-relaxed">
                   Our cozy little matcha octopus plushie went viral on Pinterest, with over 50,000 saves! High-demand inspired us to launch a sustainable, collective studio for local Pahadi women and rural female artisans.
                 </p>
               </div>
             </div>
 
             <!-- 2026 -->
-            <div class="relative">
-              <span class="absolute -left-[41px] top-1 text-xl select-none">🧶</span>
-              <div class="bg-[#F4E9E1] rounded-2xl p-5 border border-[#70411B]/10 shadow-sm relative">
-                <div class="absolute top-1 right-2 border-dashed border-[#70411B]/10 rounded"></div>
-                <span class="font-serif font-bold text-lg text-[#9A5B2A] block mb-1">
+            <div class="relative timeline-item" style="opacity:0; transform:translateX(-20px); animation: fadeInTimeline 0.6s ease-out 0.8s forwards;">
+              <div class="absolute -left-[31px] top-2 w-6 h-6 rounded-full flex items-center justify-center z-10" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); box-shadow: 0 0 12px rgba(223,168,180,0.5), 0 0 20px rgba(223,168,180,0.25);">
+                <span class="text-xs select-none">&#x1F308;</span>
+              </div>
+              <div class="rounded-2xl p-5 border border-[#DFA8B4]/15 shadow-lg relative overflow-hidden" style="background: linear-gradient(135deg, rgba(247,216,222,0.2), rgba(255,247,241,0.8));">
+                <div class="absolute inset-1.5 border border-dashed border-[#DFA8B4]/15 rounded-xl pointer-events-none"></div>
+                <span class="font-serif font-bold text-lg block mb-1" style="background: linear-gradient(135deg, #DFA8B4, #c9899f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                   2026 — Cozy Collective
                 </span>
-                <p class="text-xs text-[#70411B]/85 leading-relaxed">
+                <p class="text-xs text-[#70411B]/80 leading-relaxed">
                   Today, Oouniverse is a community of 12 master artisans, row-stitching custom bags, plushies, and floral bouquets, shipped safely with organic dried botanicals worldwide.
                 </p>
               </div>

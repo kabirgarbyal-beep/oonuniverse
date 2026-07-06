@@ -16,6 +16,10 @@
   --color-sage-rgb: 169, 193, 165;
   --color-pink-light: #F7D8DE;
   --color-pink-light-rgb: 247, 216, 222;
+  --color-pink-dark: #C2185B;
+  --color-pink-dark-rgb: 194, 24, 91;
+  --color-pink-dark-hover: #AD1457;
+  --color-pink-dark-hover-rgb: 173, 20, 87;
 
   /*  Functional Colors  */
   --color-white: #FFFFFF;
